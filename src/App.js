@@ -1,7 +1,14 @@
 
 import './App.css';
 // import { Button } from 'bootstrap';
-import { Card } from 'react-bootstrap';
+
+import { HashRouter, Route ,Switch} from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import GalleryOwnerPage from './pages/GalleryOwnerPage/GalleryOwnerPage';
+import ArtistGalleriesPage from './pages/ArtistGalleriesPage/ArtistGalleriesPage';
+import GalleryByIdPage from './pages/GalleryByIdPage/GalleryByIdPage';
+// import SignUpPage from './pages/SignUpPage/SignUpPage';
 // import { Button } from 'bootstrap';
 
 
@@ -11,18 +18,18 @@ function App() {
   return (
     <>
   {/* <Button variant="primary">Primary</Button> */}
-<Card style={{ width: '18rem' }}>
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
-  </Card.Body>
-</Card>
+    
+    <HashRouter>
+      <Switch>
+        <Route exact path= "/"><HomePage /></Route>
+        <Route exact path= "/Login"><LoginPage/></Route>
+        {/* <Route exact path= "/SignUp"><SignUpPage/></Route> */}
+        <Route exact path= "/GalleryOwner"><GalleryOwnerPage/></Route>
+        <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage/></Route>
+        <Route exact path= "/ArtistGalleries/:id"><GalleryByIdPage/></Route>
+        
+      </Switch>  
+    </HashRouter> 
 
     </>
   );
