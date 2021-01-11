@@ -15,6 +15,9 @@ import GalleryByIdPage from './pages/GalleryByIdPage/GalleryByIdPage';
 // import { ButtonGroup } from 'react-bootstrap';
 
 function App() {
+
+  
+
   return (
     <>
   {/* <Button variant="primary">Primary</Button> */}
