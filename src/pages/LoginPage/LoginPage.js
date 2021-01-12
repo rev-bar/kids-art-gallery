@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import './LoginPage.css';
 import Parse from 'parse';
+import UserModel from '../../model/UserModel';
 
 
 function LoginPage(props) {
@@ -16,7 +17,9 @@ function LoginPage(props) {
         // Pass the username/email and password to logIn function
         Parse.User.logIn(email,pwd).then((user) => {
             // after successful login
-            console.log("Logged in user: "+ user);
+            
+            console.log( new UserModel(user) );
+
           }).catch(error => {
 
             console.error("Error while logging in , " + error);
