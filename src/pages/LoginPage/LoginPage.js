@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import './LoginPage.css';
+import Parse from 'parse';
+
 
 function LoginPage(props) {
 
-    // const [email, setEmail]= useState("revital@revital.com")
-    // const [pwd, setPwd]= useState(1234)
+    const [email, setEmail]= useState("rev@rev.com")
+    const [pwd, setPwd]= useState("1234")
 
-    const [email, setEmail]= useState("");
-    const [pwd, setPwd]= useState("");
+    // const [email, setEmail]= useState("");
+    // const [pwd, setPwd]= useState("");
+
+    function logIn (){
+        // Pass the username/email and password to logIn function
+        Parse.User.logIn(email,pwd).then((user) => {
+            // after successful login
+            console.log("Logged in user: "+ user);
+          }).catch(error => {
+
+            console.error("Error while logging in , " + error);
+          })
+    }
+
 
     return (
         <Container>
@@ -25,7 +39,7 @@ function LoginPage(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" value ={pwd} onChange={e=> setPwd (e.target.value)} placeholder="Password" />
                 </Form.Group>
-                <Button variant="primary" type="button">
+                <Button variant="primary" type="button" onClick={logIn}>
                     Submit
                 </Button>
             </Form>
