@@ -9,6 +9,7 @@ function LoginPage(props) {
 
     const [email, setEmail]= useState("rev@rev.com")
     const [pwd, setPwd]= useState("1234")
+    const {onLogin} = props;
 
     // const [email, setEmail]= useState("");
     // const [pwd, setPwd]= useState("");
@@ -17,7 +18,9 @@ function LoginPage(props) {
         // Pass the username/email and password to logIn function
         try{
         const user= await Parse.User.logIn(email,pwd);
-        console.log( new UserModel(user) );
+        // console.log( new UserModel(user) );
+        onLogin(new UserModel(user));
+
        } catch(error){
         console.error("Error while logging in , " + error);
        }  
