@@ -13,17 +13,15 @@ function LoginPage(props) {
     // const [email, setEmail]= useState("");
     // const [pwd, setPwd]= useState("");
 
-    function logIn (){
+    async function logIn (){
         // Pass the username/email and password to logIn function
-        Parse.User.logIn(email,pwd).then((user) => {
-            // after successful login
-            
-            console.log( new UserModel(user) );
-
-          }).catch(error => {
-
-            console.error("Error while logging in , " + error);
-          })
+        try{
+        const user= await Parse.User.logIn(email,pwd);
+        console.log( new UserModel(user) );
+       } catch(error){
+        console.error("Error while logging in , " + error);
+       }  
+        
     }
 
 
