@@ -23,12 +23,12 @@ function App() {
     setActiveUser(loggedInUser);
   }
 
-  // console.log(activeUser);
+  console.log(activeUser);
 
-  // function handleLogout() {
-  //   setActiveUser(null);
-  //   Parse.User.logOut();
-  // }
+  function handleLogout() {
+    setActiveUser(null);
+    Parse.User.logOut();
+  }
 
  
   return (
@@ -40,9 +40,9 @@ function App() {
         <Route exact path= "/"><HomePage /></Route>
         <Route exact path= "/Login"><LoginPage  onLogin={handleLogin}/></Route>
         {/* <Route exact path= "/SignUp"><SignUpPage/></Route> */}
-        <Route exact path= "/GalleryOwner"><GalleryOwnerPage/></Route>
-        <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage/></Route>
-        <Route exact path= "/ArtistGalleries/:id"><GalleryByIdPage/></Route>
+        <Route exact path= "/GalleryOwner"><GalleryOwnerPage onLogout={handleLogout}/></Route>
+        <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage onLogout={handleLogout}/></Route>
+        <Route exact path= "/ArtistGalleries/:id"><GalleryByIdPage onLogout={handleLogout}/></Route>
       </Switch>  
     </HashRouter> 
     </ActiveUserContext.Provider>

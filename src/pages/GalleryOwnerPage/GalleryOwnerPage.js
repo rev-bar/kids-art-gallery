@@ -7,7 +7,7 @@ import './GalleryOwnerPage.css';
 
 
 function GalleryOwnerPage(props) {
-
+    const {onLogout} = props;
     const acstiveUser= useContext(ActiveUserContext);
 
     if (acstiveUser) {
@@ -17,7 +17,7 @@ function GalleryOwnerPage(props) {
     
     return (
         <div>
-            <KidsGalleryNavBar></KidsGalleryNavBar>
+            <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
             <p>GalleryOwnerPage</p>
         </div>
     );

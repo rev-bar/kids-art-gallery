@@ -1,9 +1,11 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import ActiveUserContext from '../../shared/ActiveUserContext';
 import './KidsGalleryNavBar.css';
 
 function KidsGalleryNavBar(props) {
-
+  const activeUser = useContext(ActiveUserContext);
+  const { onLogout } = props;
 
     return (
 <Navbar bg="light" expand="lg">
@@ -13,14 +15,15 @@ function KidsGalleryNavBar(props) {
     
     <Nav className="mr-auto">
       <Nav.Link href="#link">HomeLogo</Nav.Link>
-      <Nav.Link href="#link">prop1</Nav.Link>
-      <Nav.Link href="#link">prop2</Nav.Link>
-      <Nav.Link href="#link">prop3</Nav.Link>
+      <Nav.Link href="#link">About me</Nav.Link>
+      <Nav.Link href="#link">My galleries</Nav.Link>
+      <Nav.Link href="#link">Galleries</Nav.Link>
+      <Nav.Link href="#link">Artists</Nav.Link>
    </Nav>
     <Nav className="ml-auto">
       <Nav.Link href="#home">LogIn</Nav.Link>
       <Nav.Link href="#home">SignIn</Nav.Link>
-      <Nav.Link href="#link">LogOut</Nav.Link>
+      <Nav.Link href="#" onClick={() => onLogout()}>LogOut</Nav.Link>
     </Nav>
   
   </Navbar.Collapse>
