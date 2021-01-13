@@ -8,11 +8,11 @@ import './GalleryOwnerPage.css';
 
 function GalleryOwnerPage(props) {
     const {onLogout} = props;
-    const acstiveUser= useContext(ActiveUserContext);
-
-    if (acstiveUser) {
-        console.log (acstiveUser);
-    }
+    const activeUser= useContext(ActiveUserContext);
+ 
+    // if (activeUser) {
+    //     console.log (activeUser);
+    // }
 
     
     return (

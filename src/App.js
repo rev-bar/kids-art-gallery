@@ -12,6 +12,7 @@ import ActiveUserContext from './shared/ActiveUserContext';
 import { useState } from 'react';
 import Parse from 'parse';
 import UserModel from './model/UserModel';
+import GalleryOwnerArtistsPage from './pages/GalleryOwnerArtistsPage/GalleryOwnerArtistsPage';
 // import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 
@@ -23,7 +24,7 @@ function App() {
     setActiveUser(loggedInUser);
   }
 
-  console.log(activeUser);
+  // console.log(activeUser);
 
   function handleLogout() {
     setActiveUser(null);
@@ -41,6 +42,7 @@ function App() {
         <Route exact path= "/Login"><LoginPage  onLogin={handleLogin}/></Route>
         {/* <Route exact path= "/SignUp"><SignUpPage/></Route> */}
         <Route exact path= "/GalleryOwner"><GalleryOwnerPage onLogout={handleLogout}/></Route>
+        <Route exact path= "/GalleryOwnerArtists"><GalleryOwnerArtistsPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries/:id"><GalleryByIdPage onLogout={handleLogout}/></Route>
       </Switch>  

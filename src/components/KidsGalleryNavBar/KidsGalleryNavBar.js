@@ -1,11 +1,17 @@
 import { useContext } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import ActiveUserContext from '../../shared/ActiveUserContext';
+
 import './KidsGalleryNavBar.css';
 
 function KidsGalleryNavBar(props) {
-  const activeUser = useContext(ActiveUserContext);
   const { onLogout } = props;
+  const activeUser= useContext(ActiveUserContext);
+ 
+
+  if (activeUser) {
+      console.log (activeUser.role);
+  }
 
     return (
 <Navbar bg="light" expand="lg">
@@ -14,16 +20,16 @@ function KidsGalleryNavBar(props) {
   <Navbar.Collapse id="basic-navbar-nav">
     
     <Nav className="mr-auto">
-      <Nav.Link href="#link">HomeLogo</Nav.Link>
-      <Nav.Link href="#link">About me</Nav.Link>
-      <Nav.Link href="#link">My galleries</Nav.Link>
-      <Nav.Link href="#link">Galleries</Nav.Link>
-      <Nav.Link href="#link">Artists</Nav.Link>
+      {/* <Nav.Link href="/">HomeLogo</Nav.Link> */}
+      {activeUser && activeUser.role==="artist"  ? <Nav.Link href="#">About me</Nav.Link>  : null}
+      {activeUser && activeUser.role==="artist"  ? <Nav.Link href="#/ArtistGalleries">My galleries</Nav.Link> : null}
+      {activeUser && activeUser.role==="galleryOwner"  ? <Nav.Link href="#/GalleryOwner">Galleries</Nav.Link> : null}
+      {activeUser && activeUser.role==="galleryOwner"  ? <Nav.Link href="#/GalleryOwnerArtists">Artists</Nav.Link> : null}   
    </Nav>
     <Nav className="ml-auto">
-      <Nav.Link href="#home">LogIn</Nav.Link>
-      <Nav.Link href="#home">SignIn</Nav.Link>
-      <Nav.Link href="#" onClick={() => onLogout()}>LogOut</Nav.Link>
+    {activeUser ? null:  <Nav.Link href="#/Login">LogIn</Nav.Link>}
+    {activeUser ? null: <Nav.Link href="#">SignIn</Nav.Link>}
+      {activeUser ? < Nav.Link href="#" onClick={() => onLogout()}>LogOut</Nav.Link>: null}
     </Nav>
   
   </Navbar.Collapse>
