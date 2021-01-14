@@ -1,0 +1,12 @@
+.c-pic-card{
+    height: 100%;
+}
+
+.c-pic-card > .card{
+    height: 100%;
+}
+
+.c-pic-card > .card img{
+    height: 200px;
+    object-fit:cover;
+}

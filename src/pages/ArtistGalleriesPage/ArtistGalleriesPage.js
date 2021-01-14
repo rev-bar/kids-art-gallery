@@ -1,5 +1,6 @@
 import React from 'react';
 import KidsGalleryNavBar from '../../components/KidsGalleryNavBar/KidsGalleryNavBar';
+import Parse from 'parse';
 import './ArtistGalleriesPage.css';
 
 function ArtistGalleriesPage(props) {
