@@ -29,6 +29,7 @@ function LoginPage(props) {
 
 
     return (
+        <div className="p-login">
         <Container>
             <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -48,6 +49,7 @@ function LoginPage(props) {
                 </Button>
             </Form>
         </Container>
+        </div>
 
     );
 }

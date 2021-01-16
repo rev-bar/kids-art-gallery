@@ -7,6 +7,7 @@ import './ArtistGalleriesPage.css';
 import ArtworkModel from '../../model/ArtworkModel';
 import PictureCard from '../../components/PictureCard/PictureCard';
 import { Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 function ArtistGalleriesPage(props) {
     const {onLogout} = props;
@@ -34,6 +35,9 @@ function ArtistGalleriesPage(props) {
         }
     },[activeUser])
 
+    if (!activeUser) {
+        return <Redirect to="#/"/>
+    }
 
     const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={3} md={6}><PictureCard artwork={artwork}/></Col>)
 
