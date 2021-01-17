@@ -1,0 +1,12 @@
+.c-gallery-card{
+    height: 100%;
+}
+
+.c-gallery-card > .card{
+    height: 100%;
+}
+
+.c-pgalleryic-card > .card img{
+    height: 200px;
+    object-fit:cover;
+}
