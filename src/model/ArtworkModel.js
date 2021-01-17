@@ -1,11 +1,11 @@
 class ArtworkModel {
-    constructor(user){
-        this.id=user.id;
-        this.name=user.get("name");
-        this.createdAt=user.get("createdAt");
-        this.createdBy=user.get("createdBy");
-        this.img=user.get("artwork").url();
-        this.galleryId=user.get("galleryId");
+    constructor(artwork){
+        this.id=artwork.id;
+        this.name=artwork.get("name");
+        this.createdAt=artwork.get("createdAt");
+        this.createdBy=artwork.get("createdBy");
+        this.img=artwork.get("artwork").url();
+        this.galleryId=artwork.get("galleryId");
 
     }
 

@@ -6,33 +6,49 @@ import ActiveUserContext from '../../shared/ActiveUserContext';
 import './ArtistGalleriesPage.css';
 import ArtworkModel from '../../model/ArtworkModel';
 import PictureCard from '../../components/PictureCard/PictureCard';
-import { Col } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import GalleryModel from '../../model/GalleryModel';
 
 function ArtistGalleriesPage(props) {
     const {onLogout} = props;
     const activeUser= useContext(ActiveUserContext);
+    const [galleries, setGalleries]= useState([])
     const [artworks, setartworks]= useState([])
 
     //reading axios data from DB
     useEffect( ()=>{
 
+       
+            async function fetchData() {
+            try {
+                const Gallery = Parse.Object.extend('Gallery');
+                const galleryQuery = new Parse.Query(Gallery);
+                // query.equalTo("name", 'A string');
+                // query.equalTo("createdBy", Parse.User.current());
+                const galleries= await galleryQuery.find();
+                console.log('Galleries found', galleries);
+                setGalleries(galleries.map(gallery=> new GalleryModel(gallery)) );
+                
+                const ArtWork = Parse.Object.extend('ArtWork');
+                const artworkQuery = new Parse.Query(ArtWork);
+                // artworkQuery.equalTo("name", 'A string');
+                // artworkQuery.equalTo("createdBy", Parse.User.current());
+                // artworkQuery.equalTo("artwork", new Parse.File("resume.txt", { base64: btoa("My file content") }));
+                artworkQuery.include("galleryId", galleries );
+                const artworksData = await artworkQuery.find(); 
+                console.log('ArtWork found', artworksData);
+                setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)) );
+            }  catch(error) {
+                // show an error alert
+                console.error('Error while fetching data', error);
+            }
+            }
+    
         if (activeUser){
-            const ArtWork = Parse.Object.extend('ArtWork');
-            const query = new Parse.Query(ArtWork);
-            // query.equalTo("name", 'A string');
-            // query.equalTo("createdBy", Parse.User.current());
-            // query.equalTo("artwork", new Parse.File("resume.txt", { base64: btoa("My file content") }));
-            // query.equalTo("galleryId", new Parse.Object("Gallery"));
-            query.find().then((artworksData) => {
-              // You can use the "get" method to get the value of an attribute
-              // Ex: response.get("<ATTRIBUTE_NAME>")
-              console.log('ArtWork found', artworksData);
-              setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)) );
-            }, error => {
-              console.error('Error while fetching ArtWork', error);
-            });
+            fetchData()
         }
+       
     },[activeUser])
 
     if (!activeUser) {
@@ -42,10 +58,16 @@ function ArtistGalleriesPage(props) {
     const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={3} md={6}><PictureCard artwork={artwork}/></Col>)
 
     return (
-        <div>
+        <div className="p-artistGalleries">
             <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
-            <p>ArtistGalleriesPage</p>
+            <Container>
+            <p>Gallery 1</p>
+            <Row>
             {artworksView}
+            </Row>
+            </Container>
+         
+           
         </div>
     );
 }
