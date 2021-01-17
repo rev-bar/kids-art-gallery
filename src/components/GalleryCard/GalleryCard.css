@@ -1,12 +1,19 @@
 .c-gallery-card{
     height: 100%;
+    padding-top:7% ;
 }
 
 .c-gallery-card > .card{
     height: 100%;
+    background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
 }
 
-.c-pgalleryic-card > .card img{
+.c-gallery-card > .card img{
     height: 200px;
     object-fit:cover;
 }
+
+.c-gallery-card  .card-title{
+    text-align: center;
+    font-weight: bold;
+} 
