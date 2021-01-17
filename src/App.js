@@ -45,7 +45,7 @@ function App() {
         <Route exact path= "/GalleryOwner"><GalleryOwnerPage onLogout={handleLogout}/></Route>
         <Route exact path= "/GalleryOwnerArtists"><GalleryOwnerArtistsPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage onLogout={handleLogout}/></Route>
-        <Route exact path= "/ArtistGalleries/:id"><GalleryByIdPage onLogout={handleLogout}/></Route>
+        <Route exact path= "/ArtistGalleries/:galleryName"><GalleryByIdPage onLogout={handleLogout}/></Route>
       </Switch>  
     </HashRouter> 
     </ActiveUserContext.Provider> 
