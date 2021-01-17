@@ -52,18 +52,20 @@ function GalleryByIdPage(props) {
 },[activeUser])
 // console.log(gallery);
 
-    const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={3} md={6}><PictureCard artwork={artwork}/></Col>)
+    const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={2} md={6}><PictureCard artwork={artwork}/></Col>)
 
 
 
 
     return (
-        <div>
+        <div className="p-GalleryByIdPage">
             <KidsGalleryNavBar></KidsGalleryNavBar>
             <Container>
-            <p>GalleryByIdPage</p>
+            <p> temp- GalleryByIdPage</p>
             <p>{galleryName}</p> 
             <Row>
+            {artworksView}
+            {artworksView}
             {artworksView}
             </Row>
             
