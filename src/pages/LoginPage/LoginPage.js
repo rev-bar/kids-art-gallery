@@ -3,6 +3,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import './LoginPage.css';
 import Parse from 'parse';
 import UserModel from '../../model/UserModel';
+import { Redirect } from 'react-router-dom';
 
 
 function LoginPage(props) {
@@ -10,6 +11,8 @@ function LoginPage(props) {
     const [email, setEmail]= useState("rev@rev.com")
     const [pwd, setPwd]= useState("1234")
     const {onLogin} = props;
+    const [redirectToArtist, setRedirectToArtist] = useState(false);
+    const [redirectToOwner, setRedirectToOwner] = useState(false);
 
     // const [email, setEmail]= useState("");
     // const [pwd, setPwd]= useState("");
@@ -17,14 +20,29 @@ function LoginPage(props) {
     async function logIn (){
         // Pass the username/email and password to logIn function
         try{
-        const user= await Parse.User.logIn(email,pwd);
-        // console.log( new UserModel(user) );
-        onLogin(new UserModel(user));
-
+        const Parseuser= await Parse.User.logIn(email,pwd);
+        const user= new UserModel(Parseuser);
+        onLogin(user);
+        //check role value for redirect:
+        if (user.role==="artist"){
+            setRedirectToArtist(true);
+        }
+        if (user.role==="galleryOwner"){
+            setRedirectToOwner(true);
+        }
+       
        } catch(error){
         console.error("Error while logging in , " + error);
        }  
         
+    }
+    //Redirection acording to role:
+    if (redirectToOwner) {
+        return <Redirect to="/GalleryOwner"/>;
+    }
+
+    if (redirectToArtist) {
+        return <Redirect to="/ArtistGalleries"/>;
     }
 
 

@@ -13,7 +13,7 @@ import { useState } from 'react';
 import Parse from 'parse';
 import UserModel from './model/UserModel';
 import GalleryOwnerArtistsPage from './pages/GalleryOwnerArtistsPage/GalleryOwnerArtistsPage';
-import PictureCard from './components/PictureCard/PictureCard';
+
 // import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 
