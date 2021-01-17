@@ -1,3 +1,35 @@
+
+
+html {
+    height: 100%;
+  }
+body .p-artistGalleries{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgK5cH3qeoFP_q_T_HP9x9lUzqTR7A19A6A&usqp=CAU");
+    height: 100%; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.p-artistGalleries .container{
+    padding: 2% 5% 10% 5%;
+   
+}
+
+
+.p-artistGalleries  p{
+color: white;
+font-weight: bold;
+font-size: 30px;
+text-align: center;
+}
+
+.p-artistGalleries >.row{
+   display:flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center; 
+}
+
+
 .p-artistGalleries >.container{
 
     margin-top:20px;
