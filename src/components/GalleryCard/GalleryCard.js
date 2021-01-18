@@ -1,8 +1,7 @@
-import { useEffect ,useState } from 'react';
+
 import { Card, Button } from 'react-bootstrap';
-import ArtworkModel from '../../model/ArtworkModel';
 import './GalleryCard.css';
-import Parse from 'parse';
+
 
 function GalleryCard(props) {
 

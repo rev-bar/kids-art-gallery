@@ -5,7 +5,7 @@ import Parse from 'parse';
 import ActiveUserContext from '../../shared/ActiveUserContext';
 import './ArtistGalleriesPage.css';
 import ArtworkModel from '../../model/ArtworkModel';
-import PictureCard from '../../components/PictureCard/PictureCard';
+// import PictureCard from '../../components/PictureCard/PictureCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import GalleryModel from '../../model/GalleryModel';

@@ -8,7 +8,7 @@ function PictureCard(props) {
 //     const picName= "pic name temp"
 //     const picText= "Temp pic Text"
 
-console.log (artwork.img);
+// console.log (artwork.img);
 
     return (
         <div className="c-pic-card">
