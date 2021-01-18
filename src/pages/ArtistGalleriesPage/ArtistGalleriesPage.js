@@ -25,6 +25,7 @@ function ArtistGalleriesPage(props) {
             try {
                 const Gallery = Parse.Object.extend('Gallery');
                 const galleryQuery = new Parse.Query(Gallery);
+                galleryQuery.equalTo("artist", Parse.User.current());
                 const galleriesData= await galleryQuery.find();
                 console.log('Galleries found', galleriesData);
                 const fetchedGalleries=galleriesData.map(gallery=> new GalleryModel(gallery)) ; 
