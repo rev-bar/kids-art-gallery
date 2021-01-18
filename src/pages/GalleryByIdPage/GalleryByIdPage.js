@@ -68,7 +68,7 @@ function GalleryByIdPage(props) {
                     {/* {artworksView}
                     {artworksView} */}
                 
-                    <Button variant="info"onClick={() => setShowModal(true)}>Add<br></br>artwork</Button>
+                    <Button variant="info" onClick={() => setShowModal(true)}>Add<br></br>artwork</Button>
                 </Row>
             </Container>
             <NewContentModal show={showModal} handleClose={() => setShowModal(false)}/>    

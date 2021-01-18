@@ -5,7 +5,22 @@ function NewContentModal(props) {
 
     const { show, handleClose } = props;
     const [name, setName] = useState("");
+    const [artwork, setArtwork] = useState(null);
 
+
+    function closeModal(){
+        setName("");
+        setArtwork(null);
+        handleClose();
+    }
+
+    function handleFileChange(e) {
+        if (e.target.files.length === 1) {
+            setArtwork(e.target.files[0]);
+        } else {
+            setArtwork(null);
+        }
+    }
 
     return (
                     
@@ -29,16 +44,16 @@ function NewContentModal(props) {
                             Artwork Image
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="file" accept="image/*"  />
+                            <Form.Control type="file" accept="image/*" onChange={handleFileChange} />
                         </Col>
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={closeModal}>
                     Cancel
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={closeModal}>
                     Add artwork
                 </Button>
             </Modal.Footer>
