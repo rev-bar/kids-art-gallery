@@ -1,5 +1,5 @@
 import { useEffect ,useState,useContext } from 'react';
-import { Col, Container , Row} from 'react-bootstrap';
+import { Col, Container , Row ,Button} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import ActiveUserContext from '../../shared/ActiveUserContext';
 import KidsGalleryNavBar from '../../components/KidsGalleryNavBar/KidsGalleryNavBar';
@@ -9,6 +9,7 @@ import ArtworkModel from '../../model/ArtworkModel';
 
 import './GalleryByIdPage.css';
 import PictureCard from '../../components/PictureCard/PictureCard';
+import NewContentModal from '../../components/NewContentModal/NewContentModal';
 
 function GalleryByIdPage(props) {
 
@@ -16,6 +17,7 @@ function GalleryByIdPage(props) {
     const activeUser= useContext(ActiveUserContext);
     // const [gallery, setGallery]= useState([])
     const [artworks, setartworks]= useState([])
+    const [showModal, setShowModal] = useState(false);
 
 
     useEffect( ()=>{
@@ -56,21 +58,20 @@ function GalleryByIdPage(props) {
 
 
 
-
     return (
         <div className="p-GalleryByIdPage">
             <KidsGalleryNavBar></KidsGalleryNavBar>
             <Container>
-            <p> temp- GalleryByIdPage</p>
-            <p>{galleryName}</p> 
-            <Row>
-            {artworksView}
-            {artworksView}
-            {artworksView}
-            </Row>
-            
+                <p>{galleryName}</p> 
+                <Row>
+                    {artworksView}
+                    {/* {artworksView}
+                    {artworksView} */}
+                
+                    <Button variant="info"onClick={() => setShowModal(true)}>Add<br></br>artwork</Button>
+                </Row>
             </Container>
-        
+            <NewContentModal show={showModal} handleClose={() => setShowModal(false)}/>    
         </div>
     );
 }
