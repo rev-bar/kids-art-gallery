@@ -3,7 +3,7 @@ import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
 
 function NewContentModal(props) {
 
-    const { show, handleClose } = props;
+    const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
     const [artwork, setArtwork] = useState(null);
 
@@ -20,6 +20,15 @@ function NewContentModal(props) {
         } else {
             setArtwork(null);
         }
+    }
+
+
+    function handleAddContent() {
+        // 1) triggers addContent at GalleryPage that will then add this content to its artworks state
+        addContent(name, artwork);
+
+        // 2) cleanup (clean all field + close the modal)
+        closeModal();
     }
 
     return (
@@ -53,7 +62,7 @@ function NewContentModal(props) {
                 <Button variant="secondary" onClick={closeModal}>
                     Cancel
                 </Button>
-                <Button variant="primary" onClick={closeModal}>
+                <Button variant="primary" onClick={handleAddContent}>
                     Add artwork
                 </Button>
             </Modal.Footer>

@@ -18,44 +18,71 @@ function GalleryByIdPage(props) {
     // const [gallery, setGallery]= useState([])
     const [artworks, setartworks]= useState([])
     const [showModal, setShowModal] = useState(false);
+    const [gallery, setGallery] = useState([]);
 
 
     useEffect( ()=>{
 
-       
         async function fetchData() {
-        try {
-            const Gallery = Parse.Object.extend('Gallery');
-            const galleryQuery = new Parse.Query(Gallery);
-            galleryQuery.equalTo("name", galleryName);
-         
-            const galleries= await galleryQuery.find();
-            console.log('Galleries found', galleries[0].id);
-            // setGallery(galleries.map(gallery=> new GalleryModel(gallery)) );
+            try {
+                const Gallery = Parse.Object.extend('Gallery');
+                const galleryQuery = new Parse.Query(Gallery);
+                galleryQuery.equalTo("name", galleryName);
             
+                const galleries= await galleryQuery.find();
+                // console.log('Galleries found', galleries);
+                setGallery(galleries );
+                
+                const ArtWork = Parse.Object.extend('ArtWork');
+                const artworkQuery = new Parse.Query(ArtWork);
+            
+                artworkQuery.equalTo("galleryId", galleries[0]);
+                const artworksData = await artworkQuery.find(); 
+                // console.log('ArtWork found', artworksData);
+                setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)));
+                
+                
+            }  catch(error) {
+                // show an error alert
+                console.error('Error while fetching data', error);
+               }
+            }
+
+            if (activeUser){
+                fetchData()
+            }
+    
+    },[activeUser])
+
+    // console.log(gallery[0].id);
+    
+    async function addContent(name, artwork) {
+        try{
+            console.log(name);
+            console.log(artwork.name);
+            console.log(gallery[0].id);
+            const pointer={"__type": "Pointer", "className": "Gallery", "objectId": gallery[0].id}
+
             const ArtWork = Parse.Object.extend('ArtWork');
-            const artworkQuery = new Parse.Query(ArtWork);
-          
-            artworkQuery.equalTo("galleryId", galleries[0]);
-            const artworksData = await artworkQuery.find(); 
-            console.log('ArtWork found', artworksData);
-            setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)));
-            
+            const newArtWork = new ArtWork();
+            newArtWork.set("name", name);
+            newArtWork.set('createdBy', Parse.User.current());
+            newArtWork.set('artwork', new Parse.File(artwork.name,artwork));
+            newArtWork.set("galleryId",pointer);
+
+            const parseArtwork = await newArtWork.save();
+            console.log('ArtWork created');
+            setartworks(artworks.concat(new ArtworkModel(parseArtwork)));           
+
         }  catch(error) {
-            // show an error alert
-            console.error('Error while fetching data', error);
-        }
-        }
-
-    if (activeUser){
-        fetchData()
+        // show an error alert
+        console.error('Error while writing to DB:', error);
     }
-   
-},[activeUser])
-// console.log(gallery);
 
+    }
+
+    //prepering data for render
     const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={2} md={6}><PictureCard artwork={artwork}/></Col>)
-
 
 
     return (
@@ -71,7 +98,7 @@ function GalleryByIdPage(props) {
                     <Button variant="info" onClick={() => setShowModal(true)}>Add<br></br>artwork</Button>
                 </Row>
             </Container>
-            <NewContentModal show={showModal} handleClose={() => setShowModal(false)}/>    
+            <NewContentModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>    
         </div>
     );
 }
