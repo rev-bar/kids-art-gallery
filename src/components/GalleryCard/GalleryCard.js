@@ -1,30 +1,15 @@
 import { useEffect ,useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import ArtworkModel from '../../model/ArtworkModel';
 import './GalleryCard.css';
+import Parse from 'parse';
 
 function GalleryCard(props) {
 
     const {gallery, artworks} = props;
-    // const [filterdArtwork, setFilterdArtwork]= useState([])
-    // // console.log(artworks[0].galleryId);
-    
-    //   // console.log(artworks.length);
-    // useEffect( ()=>{
-    //     for (let i=0 ; i< artworks.length ; i++){
-    //     // console.log(artworks);
-    //     // console.log(gallery);
-    //     console.log(artworks[0]);
-
-    //         if  (gallery.id=== artworks[i].galleryId){
-    //             setFilterdArtwork(filterdArtwork.concat(artworks[i])) 
-    //         }
-    //     }
-        
-    // },[artworks])   
-    // debugger;
-   if (artworks !== []){
-    console.log(artworks[0]);
-   }
+   
+    console.log(artworks);
+   
    const buttonLink= "#/ArtistGalleries/"+ gallery.name
     
     return (
@@ -33,7 +18,7 @@ function GalleryCard(props) {
             <Card.Body>
                 <Card.Title>{gallery.name}</Card.Title>
             </Card.Body>
-            {/* <Card.Img variant="bottom" src={artworks[0].img} /> */}
+          {artworks[0]?   <Card.Img variant="bottom" src={artworks[0].img} /> : null }
             <Button href={buttonLink} variant="primary" >Go to {gallery.name} </Button>
         </Card>
 

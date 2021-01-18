@@ -9,6 +9,7 @@ import PictureCard from '../../components/PictureCard/PictureCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import GalleryModel from '../../model/GalleryModel';
+import GalleryCard from '../../components/GalleryCard/GalleryCard';
 
 function ArtistGalleriesPage(props) {
     const {onLogout} = props;
@@ -24,21 +25,20 @@ function ArtistGalleriesPage(props) {
             try {
                 const Gallery = Parse.Object.extend('Gallery');
                 const galleryQuery = new Parse.Query(Gallery);
-                // query.equalTo("name", 'A string');
-                // query.equalTo("createdBy", Parse.User.current());
-                const galleries= await galleryQuery.find();
-                console.log('Galleries found', galleries);
-                setGalleries(galleries.map(gallery=> new GalleryModel(gallery)) );
+                const galleriesData= await galleryQuery.find();
+                console.log('Galleries found', galleriesData);
+                const fetchedGalleries=galleriesData.map(gallery=> new GalleryModel(gallery)) ; 
+                
                 
                 const ArtWork = Parse.Object.extend('ArtWork');
                 const artworkQuery = new Parse.Query(ArtWork);
-                // artworkQuery.equalTo("name", 'A string');
-                // artworkQuery.equalTo("createdBy", Parse.User.current());
-                // artworkQuery.equalTo("artwork", new Parse.File("resume.txt", { base64: btoa("My file content") }));
-                artworkQuery.include("galleryId", galleries );
+                artworkQuery.include("galleryId", fetchedGalleries );
                 const artworksData = await artworkQuery.find(); 
                 console.log('ArtWork found', artworksData);
-                setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)) );
+
+                setGalleries(fetchedGalleries);
+                setartworks(artworksData.map(artwork=> new ArtworkModel(artwork)));
+                
             }  catch(error) {
                 // show an error alert
                 console.error('Error while fetching data', error);
@@ -47,23 +47,34 @@ function ArtistGalleriesPage(props) {
     
         if (activeUser){
             fetchData()
+            // console.log(galleries[0]);
         }
        
     },[activeUser])
+
+  
 
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
 
-    const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={3} md={6}><PictureCard artwork={artwork}/></Col>)
+    // console.log(artworks);
 
+
+    // const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={3} md={6}><PictureCard artwork={artwork}/></Col>)
+
+    const galeriesView = galleries.map(gallery => <Col key={gallery.id} lg={3} md={6}><GalleryCard artworks={artworks.filter(artwork=> artwork["galleryId"].id=== gallery.id)} gallery={gallery} /></Col>)
+    
     return (
         <div className="p-artistGalleries">
             <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
             <Container>
-            <p>Gallery 1</p>
+           
             <Row>
-            {artworksView}
+            {galeriesView}
+            {galeriesView}
+            {galeriesView}
+            {galeriesView}
             </Row>
             </Container>
          
