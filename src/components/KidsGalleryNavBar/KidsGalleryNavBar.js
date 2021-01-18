@@ -23,7 +23,7 @@ function KidsGalleryNavBar(props) {
       {/* <Nav.Link href="/">HomeLogo</Nav.Link> */}
       {activeUser && activeUser.role==="artist"  ? <Nav.Link href="#">About me</Nav.Link>  : null}
       {activeUser && activeUser.role==="artist"  ? <Nav.Link href="#/ArtistGalleries">My galleries</Nav.Link> : null}
-      {activeUser && activeUser.role==="artist"  ? <Nav.Link href="#">About me</Nav.Link>  : null}
+      
       {activeUser && activeUser.role==="galleryOwner"  ? <Nav.Link href="#/GalleryOwner">Galleries</Nav.Link> : null}
       {activeUser && activeUser.role==="galleryOwner"  ? <Nav.Link href="#/GalleryOwnerArtists">Artists</Nav.Link> : null}   
    </Nav>

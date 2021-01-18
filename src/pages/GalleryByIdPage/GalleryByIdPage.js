@@ -6,13 +6,14 @@ import KidsGalleryNavBar from '../../components/KidsGalleryNavBar/KidsGalleryNav
 import Parse from 'parse';
 import GalleryModel from '../../model/GalleryModel';
 import ArtworkModel from '../../model/ArtworkModel';
+import { Redirect } from 'react-router-dom';
 
 import './GalleryByIdPage.css';
 import PictureCard from '../../components/PictureCard/PictureCard';
 import NewContentModal from '../../components/NewContentModal/NewContentModal';
 
 function GalleryByIdPage(props) {
-
+    const {onLogout} = props;
     const {galleryName} = useParams();
     const activeUser= useContext(ActiveUserContext);
     // const [gallery, setGallery]= useState([])
@@ -81,13 +82,17 @@ function GalleryByIdPage(props) {
 
     }
 
+    if (!activeUser) {
+        return <Redirect to="#/"/>
+    }
+    
     //prepering data for render
     const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={2} md={6}><PictureCard artwork={artwork}/></Col>)
 
 
     return (
         <div className="p-GalleryByIdPage">
-            <KidsGalleryNavBar></KidsGalleryNavBar>
+            <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
             <Container>
                 <p>{galleryName}</p> 
                 <Row>
