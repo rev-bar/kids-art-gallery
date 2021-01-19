@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar,Image } from 'react-bootstrap';
 import ActiveUserContext from '../../shared/ActiveUserContext';
 
 import './KidsGalleryNavBar.css';
@@ -14,8 +14,8 @@ function KidsGalleryNavBar(props) {
   }
 
     return (
-<Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#">Logo</Navbar.Brand>
+<Navbar bg="light" expand="lg" className="c-navBar">
+  <Navbar.Brand href="#"> <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFE371xtXW78pE0Dj4ntg1aIV62EdUGmwBwQ&usqp=CAU" rounded /></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     

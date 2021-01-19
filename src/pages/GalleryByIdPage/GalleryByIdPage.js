@@ -1,10 +1,10 @@
 import { useEffect ,useState,useContext } from 'react';
-import { Col, Container , Row ,Button} from 'react-bootstrap';
+import { Col, Container , Row ,Button , Image} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import ActiveUserContext from '../../shared/ActiveUserContext';
 import KidsGalleryNavBar from '../../components/KidsGalleryNavBar/KidsGalleryNavBar';
 import Parse from 'parse';
-import GalleryModel from '../../model/GalleryModel';
+// import GalleryModel from '../../model/GalleryModel';
 import ArtworkModel from '../../model/ArtworkModel';
 import { Redirect } from 'react-router-dom';
 
@@ -100,7 +100,7 @@ function GalleryByIdPage(props) {
                     {/* {artworksView}
                     {artworksView} */}
                 
-                    <Button variant="info" onClick={() => setShowModal(true)}>Add<br></br>artwork</Button>
+                    <Button variant="info" onClick={() => setShowModal(true)}><Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW8Goxnhxje8kvnJ4EzvnxpybClc1oiM4nQ&usqp=CAU"/></Button>
                 </Row>
             </Container>
             <NewContentModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>    

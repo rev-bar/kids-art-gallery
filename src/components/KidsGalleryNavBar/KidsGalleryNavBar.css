@@ -1,0 +1,12 @@
+.c-navBar img{
+height: 50px;
+object-fit: cover;
+}
+
+.c-navBar .nav-link{
+    font-family: 'Lobster', cursive;
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    }

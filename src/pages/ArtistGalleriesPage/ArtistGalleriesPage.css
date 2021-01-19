@@ -11,6 +11,7 @@ body .p-artistGalleries{
 
 .p-artistGalleries .container{
     padding: 2% 5% 10% 5%;
+    margin-top:20px;
    
 }
 
@@ -20,6 +21,7 @@ color: white;
 font-weight: bold;
 font-size: 30px;
 text-align: center;
+
 }
 
 .p-artistGalleries >.row{
@@ -27,11 +29,4 @@ text-align: center;
    flex-wrap: wrap;
    justify-content: center;
    align-items: center; 
-}
-
-
-.p-artistGalleries >.container{
-
-    margin-top:20px;
-    
 }
