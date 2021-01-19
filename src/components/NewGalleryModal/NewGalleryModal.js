@@ -5,11 +5,11 @@ function NewGalleryModal(props) {
 
     const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
-    const [artist, setArtist] = useState(null);
+    const [artist, setArtist] = useState("");
 
     function closeModal(){
         setName("");
-        setArtist(null);
+        setArtist("");
         handleClose();
     }
 
@@ -28,7 +28,22 @@ function NewGalleryModal(props) {
                 <Modal.Title>New gallery</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                form
+                <Form.Group as={Row} controlId="formHorizontalName">
+                    <Form.Label column sm={2}>
+                        Gallery Name
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" placeholder="Gallery Name" value={name} onChange={e => setName(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="formHorizontalArtist">
+                    <Form.Label column sm={2}>
+                        Artist Name
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" placeholder="Artist Name" value={artist} onChange={e => setArtist(e.target.value)} />
+                    </Col>
+                </Form.Group>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={closeModal}>
