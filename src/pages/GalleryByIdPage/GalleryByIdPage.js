@@ -87,7 +87,7 @@ function GalleryByIdPage(props) {
     }
     
     //prepering data for render
-    const artworksView = artworks.map(artwork => <Col key={artwork.id} lg={2} md={6}><PictureCard artwork={artwork}/></Col>)
+    const artworksView = artworks.map(artwork => <Col key={artwork.id} xl={2}  md={3} ><PictureCard artwork={artwork}/></Col>)
 
 
     return (
@@ -95,12 +95,12 @@ function GalleryByIdPage(props) {
             <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
             <Container>
                 <p>{galleryName}</p> 
-                <Row>
+                <Row >
+                <Button variant="info" onClick={() => setShowModal(true)}><Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW8Goxnhxje8kvnJ4EzvnxpybClc1oiM4nQ&usqp=CAU"/></Button> 
                     {artworksView}
                     {/* {artworksView}
                     {artworksView} */}
-                
-                    <Button variant="info" onClick={() => setShowModal(true)}><Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW8Goxnhxje8kvnJ4EzvnxpybClc1oiM4nQ&usqp=CAU"/></Button>
+                 
                 </Row>
             </Container>
             <NewContentModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>    

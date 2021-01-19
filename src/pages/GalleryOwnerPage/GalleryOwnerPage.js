@@ -7,7 +7,7 @@ import GalleryModel from '../../model/GalleryModel';
 import { useEffect,useState } from 'react';
 import Parse from 'parse';
 import './GalleryOwnerPage.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row ,Button , Image } from 'react-bootstrap';
 import OwnerGalleryCard from '../../components/OwnerGalleryCard/OwnerGalleryCard';
 import UserModel from '../../model/UserModel';
 
@@ -60,15 +60,18 @@ function GalleryOwnerPage(props) {
         return <Redirect to="#/"/>
     }
 
-    const galeriesView = galleries.map(gallery => <Col key={gallery.id} lg={3} md={6}><OwnerGalleryCard gallery= {gallery} artist={artists.filter(artist=> artist.id=== gallery.artist.id)} /></Col>)
+    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard gallery= {gallery} artist={artists.filter(artist=> artist.id=== gallery.artist.id)} /></Col>)
     
     return (
         <div  className="p-GalleryOwnerPage">
             <KidsGalleryNavBar onLogout={onLogout}></KidsGalleryNavBar>
-            <p>GalleryOwnerPage</p>
+            <p>{activeUser.username}'s galleries</p>
             <Container>
                 <Row>
-                  {galeriesView}
+                <Button variant="info" >
+                    <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW8Goxnhxje8kvnJ4EzvnxpybClc1oiM4nQ&usqp=CAU"/>
+                </Button> 
+                {galeriesView}
                 </Row>
            </Container>
         </div>

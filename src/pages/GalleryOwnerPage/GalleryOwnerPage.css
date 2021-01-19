@@ -17,14 +17,15 @@ body .p-GalleryOwnerPage{
 .p-GalleryOwnerPage  p{
 color: white;
 font-weight: bold;
-font-size: 30px;
+font-size: 60px;
 text-align: center;
+font-family: 'Lobster', cursive;
 }
 
 .p-GalleryOwnerPage .row{
    display:flex;
    flex-wrap: wrap;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
  
 }
@@ -37,3 +38,17 @@ text-align: center;
   
  }
 
+ .p-GalleryOwnerPage .btn{
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    margin:30px 20px 20px 20px ;
+    border: black solid 2px;
+ }
+
+ .p-GalleryOwnerPage img{
+    height: 80px;
+    object-fit: cover;
+ }
