@@ -9,6 +9,7 @@
 .c-gallery-card > .card{
     height: 100%;
     background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
+    height: 300px;
 }
 
 .c-gallery-card > .card img{
