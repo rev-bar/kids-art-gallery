@@ -10,6 +10,7 @@ import './GalleryOwnerPage.css';
 import { Col, Container, Row ,Button , Image } from 'react-bootstrap';
 import OwnerGalleryCard from '../../components/OwnerGalleryCard/OwnerGalleryCard';
 import UserModel from '../../model/UserModel';
+import NewGalleryModal from '../../components/NewGalleryModal/NewGalleryModal';
 
 
 function GalleryOwnerPage(props) {
@@ -17,6 +18,7 @@ function GalleryOwnerPage(props) {
     const activeUser= useContext(ActiveUserContext);
     const [galleries, setGalleries]= useState([])
     const [artists, setArtists]= useState([])
+    const [showModal, setShowModal] = useState(false);
 
     useEffect( ()=>{
 
@@ -68,12 +70,13 @@ function GalleryOwnerPage(props) {
             <p>{activeUser.username}'s galleries</p>
             <Container>
                 <Row>
-                <Button variant="info" >
+                <Button variant="info" onClick={() => setShowModal(true)} >
                     <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW8Goxnhxje8kvnJ4EzvnxpybClc1oiM4nQ&usqp=CAU"/>
                 </Button> 
                 {galeriesView}
                 </Row>
            </Container>
+           <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)}/>
         </div>
     );
 }
