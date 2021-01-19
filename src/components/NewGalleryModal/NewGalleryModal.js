@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
 
 function NewGalleryModal(props) {
-
+    const {artists} = props
     const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
     const [artist, setArtist] = useState("");
+    ;
+
 
     function closeModal(){
         setName("");
@@ -20,10 +22,24 @@ function NewGalleryModal(props) {
         // 2) cleanup (clean all field + close the modal)
         closeModal();
     }
+    //rendering artists selection options:
+    let selectOptions = [];
+    if(artists.length >= 1 ){
+        selectOptions = artists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
+    }
+    
+    function artistPicked(e){
+        let index = e.target.value;
+        setArtist (index);
+      
+    }
 
+
+
+    
     return (
                    
-        <Modal show={show} onHide={handleClose} size="xl" className="c-new-recipe-modal">
+        <Modal show={show} onHide={handleClose} size="l" className="c-new-recipe-modal">
             <Modal.Header closeButton>
                 <Modal.Title>New gallery</Modal.Title>
             </Modal.Header>
@@ -41,7 +57,9 @@ function NewGalleryModal(props) {
                         Artist Name
                     </Form.Label>
                     <Col sm={10}>
-                        <Form.Control type="text" placeholder="Artist Name" value={artist} onChange={e => setArtist(e.target.value)} />
+                    <select value = {artist} onChange={artistPicked } >
+                        {selectOptions}
+                    </select>
                     </Col>
                 </Form.Group>
             </Modal.Body>

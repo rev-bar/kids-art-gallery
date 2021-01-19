@@ -59,10 +59,23 @@ function GalleryOwnerPage(props) {
 
 async function addContent(name, artist) {
     try{
-        console.log(name);
         console.log(artist);
-            
+        const galleryArtist = artists.find(element => element.username=== artist)
+        console.log(galleryArtist);
+        const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
+         
+        
+        const Gallery = Parse.Object.extend('Gallery');
+        const NewGallery = new Gallery();
 
+        NewGallery.set('name', name);
+        NewGallery.set('createdBy', Parse.User.current());
+        NewGallery.set('artist', pointer);
+
+        const parseGallery = await NewGallery.save();
+        console.log('Gallery created');
+        setGalleries(galleries.concat(new GalleryModel(parseGallery)));  
+            
     }  catch(error) {
     // show an error alert
     console.error('Error while writing to DB:', error);
@@ -91,7 +104,7 @@ async function addContent(name, artist) {
                 {galeriesView}
                 </Row>
            </Container>
-           <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>
+           <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent} artists={artists}/>
         </div>
     );
 }
