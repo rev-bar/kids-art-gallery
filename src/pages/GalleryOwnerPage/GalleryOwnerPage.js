@@ -57,10 +57,25 @@ function GalleryOwnerPage(props) {
 },[activeUser])
 
 
+async function addContent(name, artist) {
+    try{
+        console.log(name);
+        console.log(artist);
+            
+
+    }  catch(error) {
+    // show an error alert
+    console.error('Error while writing to DB:', error);
+}
+
+}
+
  
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
+
+
 
     const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard gallery= {gallery} artist={artists.filter(artist=> artist.id=== gallery.artist.id)} /></Col>)
     
@@ -76,7 +91,7 @@ function GalleryOwnerPage(props) {
                 {galeriesView}
                 </Row>
            </Container>
-           <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)}/>
+           <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>
         </div>
     );
 }

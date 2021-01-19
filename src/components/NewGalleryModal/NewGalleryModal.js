@@ -49,7 +49,7 @@ function NewGalleryModal(props) {
                 <Button variant="secondary" onClick={closeModal}>
                     Cancel
                 </Button>
-                <Button variant="primary" onClick={closeModal}>
+                <Button variant="primary" onClick={handleAddContent}>
                     Add gallery
                 </Button>
             </Modal.Footer>
