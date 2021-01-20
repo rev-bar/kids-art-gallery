@@ -54,7 +54,7 @@ function GalleryOwnerPage(props) {
       
     }
    
-},[activeUser])
+},[activeUser,galleries])
 
 
 async function addContent(name, artist) {

@@ -73,9 +73,7 @@ function ArtistGalleriesPage(props) {
            
             <Row>
             {galeriesView}
-            {galeriesView}
-            {galeriesView}
-            {galeriesView}
+            
             </Row>
             </Container>
          
