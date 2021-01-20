@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
 
 function NewGalleryModal(props) {
@@ -7,7 +7,14 @@ function NewGalleryModal(props) {
     const [name, setName] = useState("");
     const [artist, setArtist] = useState("");
     ;
+    
+    //add use effect with artists
+    useEffect( ()=>{
+        if (artists.length >= 1){
+            setArtist (artists[0].username);
+        }
 
+    },[artists])
 
     function closeModal(){
         setName("");

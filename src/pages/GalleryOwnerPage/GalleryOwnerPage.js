@@ -49,39 +49,39 @@ function GalleryOwnerPage(props) {
         }
         }
 
-    if (activeUser){
-        fetchData()
-      
-    }
-   
-},[activeUser,galleries])
-
-
-async function addContent(name, artist) {
-    try{
-        console.log(artist);
-        const galleryArtist = artists.find(element => element.username=== artist)
-        console.log(galleryArtist);
-        const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
-         
+        if (activeUser){
+            fetchData()
         
-        const Gallery = Parse.Object.extend('Gallery');
-        const NewGallery = new Gallery();
+        }
+   
+    },[activeUser])
 
-        NewGallery.set('name', name);
-        NewGallery.set('createdBy', Parse.User.current());
-        NewGallery.set('artist', pointer);
 
-        const parseGallery = await NewGallery.save();
-        console.log('Gallery created');
-        setGalleries(galleries.concat(new GalleryModel(parseGallery)));  
+    async function addContent(name, artist) {
+        try{
+            console.log(artist);
+            const galleryArtist = artists.find(element => element.username=== artist)
+            console.log(galleryArtist);
+            // const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
             
-    }  catch(error) {
-    // show an error alert
-    console.error('Error while writing to DB:', error);
-}
+            
+            const Gallery = Parse.Object.extend('Gallery');
+            const NewGallery = new Gallery();
 
-}
+            NewGallery.set('name', name);
+            NewGallery.set('createdBy', Parse.User.current());
+            NewGallery.set('artist', galleryArtist.parseUser);
+
+            const parseGallery = await NewGallery.save();
+            console.log('Gallery created');
+            setGalleries(galleries.concat(new GalleryModel(parseGallery)));  
+                
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
+    }
+
+    }
 
  
     if (!activeUser) {
@@ -89,8 +89,8 @@ async function addContent(name, artist) {
     }
 
 
-
-    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard gallery= {gallery} artist={artists.filter(artist=> artist.id=== gallery.artist.id)} /></Col>)
+    
+    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard gallery= {gallery} artist={artists.find(artist=> (artist.id=== gallery.artist.id ) )} /></Col>)
     
     return (
         <div  className="p-GalleryOwnerPage">
