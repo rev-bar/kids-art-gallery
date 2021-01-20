@@ -17,7 +17,7 @@ function AddArtistModal(props) {
     
     function handleAddContent() {
         // 1) triggers addContent at GalleryOwnerArtistPage that will then add this content to its artists state
-        addContent(artistName, about,email,pwd);
+        addContent(artistName, about ,email,pwd);
 
         // 2) cleanup (clean all field + close the modal)
         closeModal();

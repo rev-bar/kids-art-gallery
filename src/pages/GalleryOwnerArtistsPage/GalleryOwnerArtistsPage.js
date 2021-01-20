@@ -53,10 +53,10 @@ function GalleryOwnerArtistsPage(props) {
     
 
 
-    async function addContent(about, artistName,email,  pwd) {
+    async function addContent( artistName,about,email,  pwd) {
         try{
-            console.log(about);
             console.log(artistName);
+            console.log(about);
             console.log(email);
             console.log(pwd);
 
@@ -68,7 +68,7 @@ function GalleryOwnerArtistsPage(props) {
             user.set('role', "artist");
             user.set('parentId', Parse.User.current());
             user.set('password', pwd);
-            user.set('about', pwd);
+            user.set('about', about);
 
             const newArtistUser= await user.signUp();
             console.log('User signed up', user);
