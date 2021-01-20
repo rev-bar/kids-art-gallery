@@ -49,7 +49,9 @@ function GalleryOwnerArtistsPage(props) {
    
     },[activeUser])
 
- 
+    
+
+
     async function addContent(about, artistName,email,  pwd) {
         try{
             console.log(about);
@@ -57,7 +59,8 @@ function GalleryOwnerArtistsPage(props) {
             console.log(email);
             console.log(pwd);
 
-            
+            let sessionToken = Parse.User.current().get("sessionToken");
+
             const user = new Parse.User()
             user.set('username', artistName);
             user.set('email', email);
@@ -66,10 +69,12 @@ function GalleryOwnerArtistsPage(props) {
             user.set('password', pwd);
             user.set('about', pwd);
 
-
             const newArtistUser= await user.signUp();
             console.log('User signed up', user);
             setArtists(artists.concat(new UserModel (newArtistUser)));  
+            
+            Parse.User.become(sessionToken);
+            
  
                 
         }  catch(error) {
