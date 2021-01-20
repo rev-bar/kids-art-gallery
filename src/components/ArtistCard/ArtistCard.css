@@ -1,0 +1,33 @@
+.c-artist-card{
+    height: 100%;
+    padding-top:7% ;
+}
+
+.c-artist-card > .card{
+    height: 100%;
+    background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
+    height: 300px;
+}
+
+.c-artist-card > .card img{
+    height: 200px;
+    object-fit:cover;
+}
+
+.c-artist-card  .card-title{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Lobster', cursive;
+} 
+.c-artist-card  .name{
+    font-size: 45px;
+} 
+.c-artist-card  .about{
+    font-size: 30px;
+    margin-top: 30px;
+} 
+.c-artist-card  .btn{
+    text-align: center;
+    font-weight: bold;
+    
+} 
