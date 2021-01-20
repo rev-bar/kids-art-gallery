@@ -50,11 +50,12 @@ function GalleryOwnerArtistsPage(props) {
     },[activeUser])
 
  
-    async function addContent(about, artistName) {
+    async function addContent(about, artistName,email,  pwd) {
         try{
             console.log(about);
-         
             console.log(artistName);
+            console.log(email);
+            console.log(pwd);
             // const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
             
             

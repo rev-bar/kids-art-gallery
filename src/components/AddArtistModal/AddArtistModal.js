@@ -6,6 +6,8 @@ function AddArtistModal(props) {
     const { show, handleClose, addContent } = props;
     const [artistName, setArtistName] = useState("");
     const [about, setAbout] = useState("");
+    const [email, setEmail] = useState("");
+    const [pwd, setPwd] = useState("");
 
     function closeModal(){
         setArtistName("");
@@ -15,7 +17,7 @@ function AddArtistModal(props) {
     
     function handleAddContent() {
         // 1) triggers addContent at GalleryOwnerArtistPage that will then add this content to its artists state
-        addContent(artistName, about);
+        addContent(artistName, about,email,pwd);
 
         // 2) cleanup (clean all field + close the modal)
         closeModal();
@@ -47,6 +49,21 @@ function AddArtistModal(props) {
                         <Form.Control type="text" placeholder="About the artist" onChange={e => setAbout(e.target.value)}  />
                     </Col>
                 </Form.Group>
+
+                <Form.Group as={Row} controlId="formBasicEmail">
+                    <Form.Label column sm={2}>Email address</Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)}/>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} controlId="formBasicPassword">
+                    <Form.Label column sm={2}>Password</Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="password" placeholder="Password" onChange={e => setPwd(e.target.value)}/>
+                    </Col>
+                </Form.Group>
+
             </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -54,7 +71,7 @@ function AddArtistModal(props) {
                 Cancel
             </Button>
             <Button variant="primary" onClick={handleAddContent}>
-                Add artwork
+                Add artist
             </Button>
         </Modal.Footer>
     </Modal>
