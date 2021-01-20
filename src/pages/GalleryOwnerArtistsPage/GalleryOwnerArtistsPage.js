@@ -29,6 +29,7 @@ function GalleryOwnerArtistsPage(props) {
             const User = new Parse.User();
             const ArtistQuery = new Parse.Query(User);
             ArtistQuery.equalTo("role","artist");
+            ArtistQuery.equalTo("parentId",Parse.User.current());
 
             const artistsData = await ArtistQuery.find(); 
             // console.log('Artists found', artistsData);
@@ -72,7 +73,7 @@ function GalleryOwnerArtistsPage(props) {
             const newArtistUser= await user.signUp();
             console.log('User signed up', user);
             setArtists(artists.concat(new UserModel (newArtistUser)));  
-            
+
             Parse.User.become(sessionToken);
             
  
