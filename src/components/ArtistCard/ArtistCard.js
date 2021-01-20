@@ -6,7 +6,7 @@ function ArtistCard(props) {
 
     const {artist} = props;
 
-    console.log(artist);
+    // console.log(artist);
 
     return (
         <div className="c-artist-card">

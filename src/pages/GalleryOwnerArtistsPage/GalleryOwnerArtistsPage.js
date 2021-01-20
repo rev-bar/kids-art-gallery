@@ -2,15 +2,17 @@ import { useContext } from 'react';
 import KidsGalleryNavBar from '../../components/KidsGalleryNavBar/KidsGalleryNavBar';
 import ActiveUserContext from '../../shared/ActiveUserContext';
 import { Redirect } from 'react-router-dom';
-import GalleryModel from '../../model/GalleryModel';
+// import GalleryModel from '../../model/GalleryModel';
 import { useEffect,useState } from 'react';
 import Parse from 'parse';
 import { Col, Container, Row ,Button , Image } from 'react-bootstrap';
-import OwnerGalleryCard from '../../components/OwnerGalleryCard/OwnerGalleryCard';
+// import OwnerGalleryCard from '../../components/OwnerGalleryCard/OwnerGalleryCard';
 import UserModel from '../../model/UserModel';
-import NewGalleryModal from '../../components/NewGalleryModal/NewGalleryModal';
+// import NewGalleryModal from '../../components/NewGalleryModal/NewGalleryModal';
 import './GalleryOwnerArtistsPage.css';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
+
+import AddArtistModal from '../../components/AddArtistModal/AddArtistModal';
 
 
 function GalleryOwnerArtistsPage(props) {
@@ -29,7 +31,7 @@ function GalleryOwnerArtistsPage(props) {
             ArtistQuery.equalTo("role","artist");
 
             const artistsData = await ArtistQuery.find(); 
-            console.log('Artists found', artistsData);
+            // console.log('Artists found', artistsData);
             const fetchedArtists=artistsData.map(artist=> new UserModel(artist)) ; 
                   
             setArtists(fetchedArtists);
@@ -48,6 +50,31 @@ function GalleryOwnerArtistsPage(props) {
     },[activeUser])
 
  
+    async function addContent(about, artistName) {
+        try{
+            console.log(about);
+         
+            console.log(artistName);
+            // const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
+            
+            
+            // const Gallery = Parse.Object.extend('Gallery');
+            // const NewGallery = new Gallery();
+
+            // NewGallery.set('name', name);
+            // NewGallery.set('createdBy', Parse.User.current());
+            // NewGallery.set('artist', galleryArtist.parseUser);
+
+            // const parseGallery = await NewGallery.save();
+            // console.log('Gallery created');
+            // setGalleries(galleries.concat(new GalleryModel(parseGallery)));  
+                
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
+    }
+
+    }
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
@@ -66,6 +93,7 @@ function GalleryOwnerArtistsPage(props) {
                     {artistsView}
                 </Row>
             </Container>
+            <AddArtistModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>
         </div>
     );
 }
