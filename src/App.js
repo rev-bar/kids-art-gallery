@@ -39,7 +39,7 @@ function App() {
     <ActiveUserContext.Provider value={activeUser}>
     <HashRouter>
       <Switch>
-        <Route exact path= "/"><HomePage /></Route>
+        <Route exact path= "/"><HomePage onLogout={handleLogout}/></Route>
         <Route exact path= "/Login"><LoginPage  onLogin={handleLogin}/></Route>
         {/* <Route exact path= "/SignUp"><SignUpPage/></Route> */}
         <Route exact path= "/GalleryOwner"><GalleryOwnerPage onLogout={handleLogout}/></Route>
