@@ -56,19 +56,21 @@ function GalleryOwnerArtistsPage(props) {
             console.log(artistName);
             console.log(email);
             console.log(pwd);
-            // const pointer={"__type": "Pointer", "className": "_User", "objectId": galleryArtist.id}
-            
-            
-            // const Gallery = Parse.Object.extend('Gallery');
-            // const NewGallery = new Gallery();
 
-            // NewGallery.set('name', name);
-            // NewGallery.set('createdBy', Parse.User.current());
-            // NewGallery.set('artist', galleryArtist.parseUser);
+            
+            const user = new Parse.User()
+            user.set('username', artistName);
+            user.set('email', email);
+            user.set('role', "artist");
+            user.set('parentId', Parse.User.current());
+            user.set('password', pwd);
+            user.set('about', pwd);
 
-            // const parseGallery = await NewGallery.save();
-            // console.log('Gallery created');
-            // setGalleries(galleries.concat(new GalleryModel(parseGallery)));  
+
+            const newArtistUser= await user.signUp();
+            console.log('User signed up', user);
+            setArtists(artists.concat(new UserModel (newArtistUser)));  
+ 
                 
         }  catch(error) {
         // show an error alert
