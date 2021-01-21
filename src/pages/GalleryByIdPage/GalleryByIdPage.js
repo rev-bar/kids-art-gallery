@@ -11,6 +11,7 @@ import { Redirect } from 'react-router-dom';
 import './GalleryByIdPage.css';
 import PictureCard from '../../components/PictureCard/PictureCard';
 import NewContentModal from '../../components/NewContentModal/NewContentModal';
+// import PictureModal from '../../components/PictureModal/PictureModal';
 
 function GalleryByIdPage(props) {
     const {onLogout} = props;
@@ -103,7 +104,9 @@ function GalleryByIdPage(props) {
                  
                 </Row>
             </Container>
-            <NewContentModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>    
+            <NewContentModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent}/>   
+            {/* <PictureModal show={showModal} handleClose={() => setShowModal(false)}/> */}
+
         </div>
     );
 }

@@ -32,7 +32,7 @@ function GalleryOwnerArtistsPage(props) {
             ArtistQuery.equalTo("parentId",Parse.User.current());
 
             const artistsData = await ArtistQuery.find(); 
-            // console.log('Artists found', artistsData);
+            console.log('Artists found', artistsData[0].get("aditionalData"));
             const fetchedArtists=artistsData.map(artist=> new UserModel(artist)) ; 
                   
             setArtists(fetchedArtists);
@@ -68,7 +68,7 @@ function GalleryOwnerArtistsPage(props) {
             user.set('role', "artist");
             user.set('parentId', Parse.User.current());
             user.set('password', pwd);
-            user.set('about', about);
+            user.set('aditionalData', { "about": about })
 
             const newArtistUser= await user.signUp();
             console.log('User signed up', user);

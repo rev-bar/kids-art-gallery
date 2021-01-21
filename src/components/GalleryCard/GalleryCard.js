@@ -7,7 +7,7 @@ function GalleryCard(props) {
 
     const {gallery, artworks} = props;
    
-    console.log(artworks);
+    // console.log(artworks);
    
    const buttonLink= "#/ArtistGalleries/"+ gallery.name
     
