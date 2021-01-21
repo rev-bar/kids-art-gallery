@@ -1,0 +1,17 @@
+.c-large-pic-modal .modal-content{
+    background-color:  rgb(26, 145, 139);;
+} 
+
+.c-large-pic-modal  img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.c-large-pic-modal  .btn{
+margin-left: auto;
+margin-right:20px ;
+background-color: white;
+color:   rgb(26, 145, 139);
+font-weight: bold;
+font-size: 20px;
+}
