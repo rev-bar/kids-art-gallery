@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
+import './NewContentModal.css';
 
 function NewContentModal(props) {
 
@@ -33,8 +34,8 @@ function NewContentModal(props) {
 
     return (
                     
-        <Modal show={show} onHide={handleClose} size="xl" className="c-new-recipe-modal">
-            <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose} size="xl" className="c-new-artwork-modal">
+            <Modal.Header>
                 <Modal.Title>New artwork</Modal.Title>
             </Modal.Header>
             <Modal.Body>

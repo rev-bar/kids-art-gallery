@@ -1,5 +1,6 @@
 import { useState ,useEffect} from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
+import './NewGalleryModal.css';
 
 function NewGalleryModal(props) {
     const {artists} = props
@@ -46,7 +47,7 @@ function NewGalleryModal(props) {
     
     return (
                    
-        <Modal show={show} onHide={handleClose} size="l" className="c-new-recipe-modal">
+        <Modal show={show} onHide={handleClose} size="xl" className="c-new-gallery-modal">
             <Modal.Header closeButton>
                 <Modal.Title>New gallery</Modal.Title>
             </Modal.Header>
@@ -55,7 +56,7 @@ function NewGalleryModal(props) {
                     <Form.Label column sm={2}>
                         Gallery Name
                     </Form.Label>
-                    <Col sm={10}>
+                    <Col sm={8}>
                         <Form.Control type="text" placeholder="Gallery Name" value={name} onChange={e => setName(e.target.value)} />
                     </Col>
                 </Form.Group>

@@ -1,0 +1,23 @@
+.c-new-gallery-modal  .modal-content{
+    background-image: linear-gradient(rgb(34, 139, 134), rgb(186, 240, 237));
+}
+.c-new-gallery-modal  .modal-title {
+  font-family: 'Lobster', cursive;
+  margin: auto;
+  font-size: 30px;
+}
+
+.c-new-gallery-modal  .form-label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .c-new-gallery-modal  .btn {
+    background-color:rgb(34, 139, 134) ;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+
+
+

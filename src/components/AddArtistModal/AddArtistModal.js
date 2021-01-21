@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
+import './AddArtistModal.css';
 
 
 function AddArtistModal(props) {
@@ -26,8 +27,8 @@ function AddArtistModal(props) {
 
     return (
     
-        <Modal show={show} onHide={handleClose} size="xl" className="c-new-recipe-modal">
-        <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose} size="xl" className="c-new-artist-modal">
+        <Modal.Header>
             <Modal.Title>New artist</Modal.Title>
         </Modal.Header>
         <Modal.Body>
