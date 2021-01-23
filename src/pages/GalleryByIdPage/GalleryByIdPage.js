@@ -54,7 +54,7 @@ function GalleryByIdPage(props) {
                 fetchData()
             }
     
-    },[activeUser])
+    },[activeUser,artworks])
 
     // console.log(gallery[0].id);
     
@@ -84,8 +84,13 @@ function GalleryByIdPage(props) {
     }
     async function deleteArtwork(artwork) {
         try{
-            console.log(artwork);
-                    
+            console.log(artwork.id);
+            const ArtWork = Parse.Object.extend('ArtWork');
+            const query = new Parse.Query(ArtWork);
+            
+            const deleteArtwork= await (query.get(artwork.id))
+            deleteArtwork.destroy().then(console.log('Deleted ArtWork'));
+       
 
         }  catch(error) {
         // show an error alert
