@@ -1,6 +1,7 @@
 .c-pic-card{
     height: 100%;
     padding-top:7% ;
+    position: relative;
 }
 
 .c-pic-card > .card{
@@ -14,9 +15,25 @@
     object-fit:cover;
 }
 
+.c-pic-card .delete-button {
+    height: 20px;
+    object-fit:cover;
+    background-color: red;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    top: 15px;
+    left: 118px;
+    z-index: 100;
+    
+} 
+
+
+
 .c-pic-card  .card-title{
     text-align: center;
     font-weight: bold;
     font-size: 30px;
     font-family: 'Lobster', cursive;
+    margin-top:10px ;
 } 

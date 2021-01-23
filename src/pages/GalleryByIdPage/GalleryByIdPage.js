@@ -82,13 +82,24 @@ function GalleryByIdPage(props) {
     }
 
     }
+    async function deleteArtwork(artwork) {
+        try{
+            console.log(artwork);
+                    
+
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
+    }
+
+    }
 
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
     
     //prepering data for render
-    const artworksView = artworks.map(artwork => <Col key={artwork.id} xl={2}  md={3} ><PictureCard artwork={artwork}/></Col>)
+    const artworksView = artworks.map(artwork => <Col key={artwork.id} xl={2}  md={3} ><PictureCard deleteArtwork={deleteArtwork} artwork={artwork}/></Col>)
 
 
     return (
