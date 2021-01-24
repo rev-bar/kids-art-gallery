@@ -3,16 +3,22 @@
     padding-top:7% ;
 }
 
+.c-owner-gallery-card  img{
+    height: 30px;
+    object-fit:cover;
+    background-color: red;
+}
+
 .c-owner-gallery-card > .card{
     height: 100%;
     background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
     height: 300px;
 }
 
-.c-owner-gallery-card > .card img{
+/* .c-owner-gallery-card > .card img{
     height: 200px;
     object-fit:cover;
-}
+} */
 
 .c-owner-gallery-card  .card-title{
     text-align: center;

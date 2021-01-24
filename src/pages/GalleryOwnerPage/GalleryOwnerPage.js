@@ -83,14 +83,46 @@ function GalleryOwnerPage(props) {
 
     }
 
+    async function deleteGallery(gallery) {
+        try{
+            // console.log(gallery);
+            const Gallery = Parse.Object.extend('Gallery');
+            const galleryQuery = new Parse.Query(Gallery);
+            
+            const deleteArtwork= await (galleryQuery.get(gallery.id))
+            deleteArtwork.destroy().then(console.log('Deleted gallery'));
+
+
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
+    }
+
+    }
+
+    async function editGallery(gallery) {
+        try{
+            // console.log(gallery);
+            const Gallery = Parse.Object.extend('Gallery');
+            const galleryQuery = new Parse.Query(Gallery);
+            
+            const editArtwork= await (galleryQuery.get(gallery.id))
+            
+
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
+    }
+
+    }
  
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
 
 
-    
-    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard gallery= {gallery} artist={artists.find(artist=> (artist.id=== gallery.artist.id ) )} /></Col>)
+
+    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard deleteGallery={deleteGallery} editGallery={editGallery}gallery= {gallery} artist={artists.find(artist=> (artist.id=== gallery.artist.id ) )} /></Col>)
     
     return (
         <div  className="p-GalleryOwnerPage">
