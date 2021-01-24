@@ -1,6 +1,14 @@
 html {
     height: 100%;
   }
+  
+  body {
+   height: 100%; 
+ }
+
+ body #root{
+   height: 100%; 
+ }
 body .p-GalleryOwnerArtistsPage{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgK5cH3qeoFP_q_T_HP9x9lUzqTR7A19A6A&usqp=CAU");
     height: 100%; 
