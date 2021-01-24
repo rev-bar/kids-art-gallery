@@ -9,10 +9,16 @@
     background-color: red;
 }
 
-.c-owner-gallery-card > .card{
+.c-owner-gallery-card  .row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.c-owner-gallery-card  .card{
     height: 100%;
     background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
-    height: 300px;
+   
 }
 
 /* .c-owner-gallery-card > .card img{

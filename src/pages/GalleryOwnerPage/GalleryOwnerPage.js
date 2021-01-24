@@ -11,6 +11,7 @@ import { Col, Container, Row ,Button , Image } from 'react-bootstrap';
 import OwnerGalleryCard from '../../components/OwnerGalleryCard/OwnerGalleryCard';
 import UserModel from '../../model/UserModel';
 import NewGalleryModal from '../../components/NewGalleryModal/NewGalleryModal';
+// import EditGalleryModal from '../../components/EditGalleryModal/EditGalleryModal';
 
 
 function GalleryOwnerPage(props) {
@@ -91,7 +92,8 @@ function GalleryOwnerPage(props) {
             
             const deleteThisArtwork = await (galleryQuery.get(gallery.id))
             // console.log(galleries);
-            const deletedArtwork = await deleteThisArtwork.destroy();console.log('Deleted gallery');
+            const deletedArtwork = await deleteThisArtwork.destroy();
+            console.log('Deleted gallery');
             const index= galleries.indexOf(gallery);
             // console.log(index);
             
@@ -116,13 +118,43 @@ function GalleryOwnerPage(props) {
 
     }
 
-    async function editGallery(gallery) {
+    async function editGallery(gallery,newArtistName,newGalleryName) {
         try{
-            // console.log(gallery);
+            console.log(gallery);
+            console.log(newArtistName);
+            console.log(newGalleryName);
+            const galleryArtist = artists.find(element => element.username=== newArtistName)
+            
+            // console.log(galleryArtist.parseUser);
+            console.log(galleryArtist.parseUser);
             const Gallery = Parse.Object.extend('Gallery');
             const galleryQuery = new Parse.Query(Gallery);
             
-            const editArtwork= await (galleryQuery.get(gallery.id))
+            const editedgalery= await (galleryQuery.get(gallery.id))
+            // console.log(editedgalery.get("name"));
+            if (newGalleryName){
+                editedgalery.set('name', newGalleryName);
+            } else {
+                editedgalery.set('name', editedgalery.get("name")); 
+            }
+            
+            editedgalery.set('createdBy', Parse.User.current());
+            editedgalery.set('artist', galleryArtist.parseUser);
+
+            const parseGallery = await editedgalery.save();
+            console.log('Gallery edited ');
+            console.log(parseGallery);
+
+            const index= galleries.indexOf(gallery); 
+
+            if (index !== -1) {
+                let galeriesArrStart= galleries.slice(0,index);
+                galeriesArrStart = galeriesArrStart.concat(new GalleryModel(parseGallery));
+                let galeriesArrEnd= galleries.slice(index + 1);
+                let newGaleries = galeriesArrStart.concat(galeriesArrEnd);
+                setGalleries  (newGaleries);
+
+              }
             
 
         }  catch(error) {
@@ -138,7 +170,7 @@ function GalleryOwnerPage(props) {
 
 
 
-    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard deleteGallery={deleteGallery} editGallery={editGallery}gallery= {gallery} artist={artists.find(artist=> (artist.id=== gallery.artist.id ) )} /></Col>)
+    const galeriesView = galleries.map(gallery => <Col key={gallery.id} xl={3}  md={4}><OwnerGalleryCard deleteGallery={deleteGallery} editGallery={editGallery}gallery= {gallery} artists={artists} artist={artists.find(artist=> (artist.id=== gallery.artist.id ) )} /></Col>)
     
     return (
         <div  className="p-GalleryOwnerPage">
@@ -153,6 +185,7 @@ function GalleryOwnerPage(props) {
                 </Row>
            </Container>
            <NewGalleryModal show={showModal} handleClose={() => setShowModal(false)} addContent={addContent} artists={artists}/>
+          
         </div>
     );
 }
