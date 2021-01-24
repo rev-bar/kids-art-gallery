@@ -54,7 +54,7 @@ function GalleryByIdPage(props) {
                 fetchData()
             }
     
-    },[activeUser,artworks])
+    },[activeUser])
 
     // console.log(gallery[0].id);
     
@@ -82,7 +82,9 @@ function GalleryByIdPage(props) {
     }
 
     }
-    async function deleteArtwork(artwork) {
+
+   
+    async function deleteArtwork(artwork,fetchData) {
         try{
             console.log(artwork.id);
             const ArtWork = Parse.Object.extend('ArtWork');
@@ -90,7 +92,7 @@ function GalleryByIdPage(props) {
             
             const deleteArtwork= await (query.get(artwork.id))
             deleteArtwork.destroy().then(console.log('Deleted ArtWork'));
-       
+
 
         }  catch(error) {
         // show an error alert
@@ -99,12 +101,13 @@ function GalleryByIdPage(props) {
 
     }
 
+
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
     
     //prepering data for render
-    const artworksView = artworks.map(artwork => <Col key={artwork.id} xl={2}  md={3} ><PictureCard deleteArtwork={deleteArtwork} artwork={artwork}/></Col>)
+    const artworksView = artworks.map(artwork => <Col key={artwork.id} xl={3}  md={3} ><PictureCard deleteArtwork={deleteArtwork} artwork={artwork}/></Col>)
 
 
     return (
