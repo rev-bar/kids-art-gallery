@@ -7,7 +7,7 @@ function NewGalleryModal(props) {
     const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
     const [artist, setArtist] = useState("");
-    ;
+    
     
     //add use effect with artists
     useEffect( ()=>{
@@ -19,7 +19,7 @@ function NewGalleryModal(props) {
 
     function closeModal(){
         setName("");
-        setArtist("");
+        setArtist (artists[0].username);
         handleClose();
     }
 
