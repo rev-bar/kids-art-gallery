@@ -85,13 +85,29 @@ function GalleryOwnerPage(props) {
 
     async function deleteGallery(gallery) {
         try{
-            // console.log(gallery);
+            console.log(gallery);
             const Gallery = Parse.Object.extend('Gallery');
             const galleryQuery = new Parse.Query(Gallery);
             
-            const deleteArtwork= await (galleryQuery.get(gallery.id))
-            deleteArtwork.destroy().then(console.log('Deleted gallery'));
+            const deleteThisArtwork = await (galleryQuery.get(gallery.id))
+            // console.log(galleries);
+            const deletedArtwork = await deleteThisArtwork.destroy();console.log('Deleted gallery');
+            const index= galleries.indexOf(gallery);
+            // console.log(index);
+            
 
+            if (index !== -1) {
+                let galeriesArrStart= galleries.slice(0,index);
+                let galeriesArrEnd= galleries.slice(index + 1);
+                console.log(galeriesArrStart);
+                console.log(galeriesArrEnd);
+                let newGaleries = galeriesArrStart.concat(galeriesArrEnd);
+                console.log(newGaleries);
+                setGalleries(newGaleries);
+
+              }
+            
+              
 
         }  catch(error) {
         // show an error alert
