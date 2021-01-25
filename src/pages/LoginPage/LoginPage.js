@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container,Alert } from 'react-bootstrap';
 import './LoginPage.css';
 import Parse from 'parse';
 import UserModel from '../../model/UserModel';
@@ -13,7 +13,7 @@ function LoginPage(props) {
     const {onLogin} = props;
     const [redirectToArtist, setRedirectToArtist] = useState(false);
     const [redirectToOwner, setRedirectToOwner] = useState(false);
-
+    const [showLoginError, setShowLoginError] = useState(false);
     // const [email, setEmail]= useState("");
     // const [pwd, setPwd]= useState("");
 
@@ -33,7 +33,8 @@ function LoginPage(props) {
        
        } catch(error){
         console.error("Error while logging in , " + error);
-       }  
+        setShowLoginError(true);  
+    }  
         
     }
     //Redirection acording to role:
@@ -49,6 +50,7 @@ function LoginPage(props) {
     return (
         <div className="p-login">
         <Container>
+        {showLoginError ? <Alert variant="danger">Invalid Credentials!</Alert> : null}
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
