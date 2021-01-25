@@ -1,11 +1,11 @@
 
 html {
-    min-height: 100%;
+    min-height: 100vh;
   }
 
 body .p-login{
     background-image: url("loginbackground.jpg");
-    min-height: 100%;   
+    min-height: 100vh;   
     font-family: Arial, Helvetica, sans-serif;
     
 }

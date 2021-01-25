@@ -4,17 +4,17 @@ html {
   }
 
   body {
-    min-height: 100%; 
+    min-height: 100vh; 
   }
 
   body #root{
-    min-height: 100%; 
+    min-height: 100vh; 
   }
 
   
 body .p-home{
     background-image: url("homebackground.jpg");
-    min-height: 100%;   
+    min-height: 100vh;    
     font-family: Arial, Helvetica, sans-serif;   
 }
 

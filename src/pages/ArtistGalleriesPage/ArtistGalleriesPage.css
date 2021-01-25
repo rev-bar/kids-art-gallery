@@ -1,11 +1,11 @@
 
 
 html {
-    min-height: 100%;
+    min-height: 100vh;
   }
 body .p-artistGalleries{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgK5cH3qeoFP_q_T_HP9x9lUzqTR7A19A6A&usqp=CAU");
-    height: 100%; 
+    min-height: 100vh; 
     font-family: Arial, Helvetica, sans-serif;
 }
 

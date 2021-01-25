@@ -1,11 +1,18 @@
 
 html {
-    min-height: 100%;
+    min-height: 100vh;
   }
 
-body .p-signUp{
+  body {
+    min-height: 100vh; 
+  }
+ 
+  body #root{
+    min-height: 100vh; 
+  }
+  body .p-signUp{
     background-image: url("signupbackground.jpg");
-    min-height: 100%;   
+    min-height: 100vh;   
     font-family: Arial, Helvetica, sans-serif;
     
 }
