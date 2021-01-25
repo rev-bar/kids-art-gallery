@@ -101,8 +101,8 @@ function GalleryOwnerPage(props) {
                 console.log("You can delete")
                 const Gallery = Parse.Object.extend('Gallery');
                 const galleryQuery = new Parse.Query(Gallery);
-                const deleteThisArtwork = await (galleryQuery.get(gallery.id))
-                const deletedArtwork = await deleteThisArtwork.destroy();
+                const deleteThisGalley = await (galleryQuery.get(gallery.id))
+                const deletedGalley = await deleteThisGalley.destroy();
                 console.log('Deleted gallery');
                 const index= galleries.indexOf(gallery);    
 
