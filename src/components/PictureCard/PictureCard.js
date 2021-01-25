@@ -31,7 +31,7 @@ function PictureCard(props) {
                 <Card.Img className="artwork" variant="bottom" src={artwork.img} onClick={() => setShowModal(true)}/>
                 <Card.Footer className="text-muted">
                   
-                    <img className="delete-button" onClick={deleteThis}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ7O9DX6yL7LzYYgjvYMYtDv4me4jON3xYJQYIgkd0icfVD3qxX_xuMl4a6skuV_nhl1kTlUtLlv2crezZF71CcvNr1vEkk9Xqxg&usqp=CAU&ec=45761792"></img>
+                    <img className="delete-button" onClick={deleteThis} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ7O9DX6yL7LzYYgjvYMYtDv4me4jON3xYJQYIgkd0icfVD3qxX_xuMl4a6skuV_nhl1kTlUtLlv2crezZF71CcvNr1vEkk9Xqxg&usqp=CAU&ec=45761792"></img>
                 </Card.Footer>
            </Card>
            <PictureModal show={showModal} handleClose={() => setShowModal(false)} artwork={artwork.img}/>

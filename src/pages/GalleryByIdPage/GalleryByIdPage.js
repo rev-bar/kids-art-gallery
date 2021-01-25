@@ -84,15 +84,28 @@ function GalleryByIdPage(props) {
     }
 
    
-    async function deleteArtwork(artwork,fetchData) {
+    async function deleteArtwork(artwork) {
         try{
             console.log(artwork.id);
             const ArtWork = Parse.Object.extend('ArtWork');
             const query = new Parse.Query(ArtWork);
             
-            const deleteArtwork= await (query.get(artwork.id))
-            deleteArtwork.destroy().then(console.log('Deleted ArtWork'));
+            const deleteThisArtwork= await (query.get(artwork.id))
+            const deleteArtwork= await deleteThisArtwork.destroy()
+            console.log('Deleted ArtWork');
 
+            const index= artworks.indexOf(artwork);    
+
+            if (index !== -1) {
+                let artworksArrStart= artworks.slice(0,index);
+                let artworksArrEnd= artworks.slice(index + 1);
+                console.log(artworksArrStart);
+                console.log(artworksArrEnd);
+                let newArtworks = artworksArrStart.concat(artworksArrEnd);
+                console.log(newArtworks);
+                setartworks(newArtworks);
+
+            }
 
         }  catch(error) {
         // show an error alert
