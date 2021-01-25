@@ -27,6 +27,6 @@ text-align: center;
 .p-artistGalleries .row{
    display:flex;
    flex-wrap: wrap;
-   justify-content: space-between;
+   justify-content: center;
    align-items: center; 
 }
