@@ -1,6 +1,7 @@
 
 import { useState,useEffect } from 'react';
-import { Card, Button,Image, Row,Accordion, Form, Col } from 'react-bootstrap';
+import { Card, Button,Image, Row,Accordion, Form, Col ,Alert} from 'react-bootstrap';
+import Parse from 'parse';
 import './OwnerGalleryCard.css';
 
 function OwnerGalleryCard(props) {
@@ -8,10 +9,14 @@ function OwnerGalleryCard(props) {
     const {gallery, artist ,deleteGallery,editGallery, artists} = props;
     const [newGalleryName, setNewGalleryName]= useState("");
     const [newArtistName, setNewArtistName]= useState("");
-    
+    // const [showDeleteError, setShowDeleteError] = useState(true);
+
+    const currentUser= Parse.User.current(); 
+    const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
+
     useEffect( ()=>{
         if (artists.length >= 1){
-            setNewArtistName (artists[0].username);
+            setNewArtistName (filteredArtists[0].username);
         }
 
     },[artists])
@@ -27,7 +32,7 @@ function OwnerGalleryCard(props) {
 
     let selectOptions = [];
     if(artists.length >= 1 ){
-        selectOptions = artists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
+        selectOptions = filteredArtists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
     }
 
     function artistPicked(e){
@@ -73,13 +78,14 @@ function OwnerGalleryCard(props) {
                                         </Col>
                                 </Form.Group>
                                 <Row>
-                                    <Button href= "#" variant="link" onClick={editThis} mr-right > send </Button>
+                                    <Button href= "#" variant="link" onClick={editThis} mr-right eventKey="1"> send </Button>
                                 </Row>
                                 
                             </Card.Body>
                         </Accordion.Collapse>
-                  
             </Card>
+            {/* {showDeleteError ? <Alert variant="danger">Invalid Credentials!</Alert> : null} */}
+
         </Accordion>
     
        
