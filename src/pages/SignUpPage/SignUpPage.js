@@ -27,6 +27,9 @@ function SignUpPage(props) {
             user.set("password", pwd);
             const newOwnerUser= await user.signUp();
             console.log(user);
+            const Parseuser= await Parse.User.logIn(email,pwd);
+            const loginuser= new UserModel(Parseuser);
+            onLogin(loginuser);
             setRedirectToOwner(true);
             
 
