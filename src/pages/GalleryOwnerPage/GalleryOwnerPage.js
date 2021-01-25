@@ -118,9 +118,7 @@ function GalleryOwnerPage(props) {
                 }
 
             }
-        
             
-              
 
         }  catch(error) {
         // show an error alert

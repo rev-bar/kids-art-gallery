@@ -78,7 +78,7 @@ function OwnerGalleryCard(props) {
                                         </Col>
                                 </Form.Group>
                                 <Row>
-                                    <Button href= "#" variant="link" onClick={editThis} mr-right eventKey="1"> send </Button>
+                                    <Accordion.Toggle as={Button} variant="link" onClick={editThis} mr-right eventKey="1"> send </Accordion.Toggle>
                                 </Row>
                                 
                             </Card.Body>
