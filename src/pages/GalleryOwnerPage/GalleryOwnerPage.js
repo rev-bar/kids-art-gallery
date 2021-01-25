@@ -96,7 +96,7 @@ function GalleryOwnerPage(props) {
                 console.log(artworksData);
 
             if (artworksData.length >= 1){
-                console.log("You can not delete")
+                alert("This gallery is not empty- You can not delete it");
             }else{
                 console.log("You can delete")
                 const Gallery = Parse.Object.extend('Gallery');
@@ -145,11 +145,8 @@ function GalleryOwnerPage(props) {
             // console.log(editedgalery.get("name"));
             if (newGalleryName){
                 editedgalery.set('name', newGalleryName);
-            } else {
-                editedgalery.set('name', editedgalery.get("name")); 
-            }
-            
-            editedgalery.set('createdBy', Parse.User.current());
+            } 
+        
             editedgalery.set('artist', galleryArtist.parseUser);
 
             const parseGallery = await editedgalery.save();
