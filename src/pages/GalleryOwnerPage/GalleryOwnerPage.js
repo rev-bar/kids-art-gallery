@@ -86,28 +86,39 @@ function GalleryOwnerPage(props) {
 
     async function deleteGallery(gallery) {
         try{
-            console.log(gallery);
-            const Gallery = Parse.Object.extend('Gallery');
-            const galleryQuery = new Parse.Query(Gallery);
-            
-            const deleteThisArtwork = await (galleryQuery.get(gallery.id))
-            // console.log(galleries);
-            const deletedArtwork = await deleteThisArtwork.destroy();
-            console.log('Deleted gallery');
-            const index= galleries.indexOf(gallery);
-            // console.log(index);
-            
+            // console.log(gallery.id);
 
-            if (index !== -1) {
-                let galeriesArrStart= galleries.slice(0,index);
-                let galeriesArrEnd= galleries.slice(index + 1);
-                console.log(galeriesArrStart);
-                console.log(galeriesArrEnd);
-                let newGaleries = galeriesArrStart.concat(galeriesArrEnd);
-                console.log(newGaleries);
-                setGalleries(newGaleries);
 
-              }
+            const ArtWork = Parse.Object.extend('ArtWork');
+            const artworkQuery = new Parse.Query(ArtWork);
+            artworkQuery.equalTo("galleryId", gallery.parsegallery );
+            const artworksData = await artworkQuery.find(); 
+                console.log(artworksData);
+
+            if (artworksData.length >= 1){
+                console.log("You can not delete")
+            }else{
+                console.log("You can delete")
+                const Gallery = Parse.Object.extend('Gallery');
+                const galleryQuery = new Parse.Query(Gallery);
+                const deleteThisArtwork = await (galleryQuery.get(gallery.id))
+                const deletedArtwork = await deleteThisArtwork.destroy();
+                console.log('Deleted gallery');
+                const index= galleries.indexOf(gallery);    
+
+                if (index !== -1) {
+                    let galeriesArrStart= galleries.slice(0,index);
+                    let galeriesArrEnd= galleries.slice(index + 1);
+                    console.log(galeriesArrStart);
+                    console.log(galeriesArrEnd);
+                    let newGaleries = galeriesArrStart.concat(galeriesArrEnd);
+                    console.log(newGaleries);
+                    setGalleries(newGaleries);
+
+                }
+
+            }
+        
             
               
 

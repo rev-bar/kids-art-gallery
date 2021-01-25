@@ -5,6 +5,7 @@ class GalleryModel {
         this.createdAt=gallery.get("createdAt");
         this.createdBy=gallery.get("createdBy");
         this.artist=gallery.get("artist");
+        this.parsegallery=gallery;
     }
 }
 

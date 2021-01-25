@@ -26,15 +26,3 @@ function GalleryCard(props) {
 }
 
 export default GalleryCard;
-
-
-
-
-
-
-
-
-
-
-
-
