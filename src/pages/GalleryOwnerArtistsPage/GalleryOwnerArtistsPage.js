@@ -32,7 +32,7 @@ function GalleryOwnerArtistsPage(props) {
             ArtistQuery.equalTo("parentId",Parse.User.current());
 
             const artistsData = await ArtistQuery.find(); 
-            console.log('Artists found', artistsData[0].get("aditionalData"));
+            // console.log('Artists found', artistsData[0].get("aditionalData"));
             const fetchedArtists=artistsData.map(artist=> new UserModel(artist)) ; 
                   
             setArtists(fetchedArtists);
@@ -69,9 +69,16 @@ function GalleryOwnerArtistsPage(props) {
             user.set('parentId', Parse.User.current());
             user.set('password', pwd);
             user.set('aditionalData', { "about": about })
+            
 
             const newArtistUser= await user.signUp();
             console.log('User signed up', user);
+            var userACL = new Parse.ACL(user);
+            userACL.setPublicWriteAccess(true);
+            userACL.setPublicReadAccess(true);
+            user.setACL(userACL);
+            const newArtistUserWithACL = user.save();
+
             setArtists(artists.concat(new UserModel (newArtistUser)));  
 
             Parse.User.become(sessionToken);
@@ -81,14 +88,63 @@ function GalleryOwnerArtistsPage(props) {
         }  catch(error) {
         // show an error alert
         console.error('Error while writing to DB:', error);
+        }
+    }
+
+    async function editArtist(artist,newArtistName,newAboutArtist) {
+        try{
+            console.log(artist);
+            console.log(newArtistName);
+            console.log(newAboutArtist);
+
+            const changedArtist = artists.find(element => element === artist);
+
+            let sessionToken = Parse.User.current().get("sessionToken");
+
+            const User = new Parse.User();
+            const artistQuery = new Parse.Query(User);
+            const editedArtist= await (artistQuery.get(artist.id))
+            console.log(editedArtist);
+
+            if (newArtistName){
+                editedArtist.set("username", newArtistName);
+            } 
+            
+            if (newAboutArtist){
+                editedArtist.set('aditionalData', {"about":newAboutArtist });
+            }
+
+            // editedArtist.set("parentId", Parse.User.current());
+            const parseArtist= await editedArtist.save();
+            console.log('Artist edited ');
+            console.log(parseArtist);
+
+            Parse.User.become(sessionToken);
+
+            const index= artists.indexOf(artist); 
+
+            if (index !== -1) {
+                let artistsArrStart= artists.slice(0,index);
+                artistsArrStart = artistsArrStart.concat(new UserModel(parseArtist));
+                let artistsArrEnd= artists.slice(index + 1);
+                let newArtists = artistsArrStart.concat(artistsArrEnd);
+                setArtists  (newArtists);
+
+              }
+
+        }  catch(error) {
+        // show an error alert
+        console.error('Error while writing to DB:', error);
     }
 
     }
+
+
     if (!activeUser) {
         return <Redirect to="#/"/>
     }
 
-    const artistsView = artists.map(artist => <Col key={artist.id} xl={3}  md={4}><ArtistCard artist= {artist}  /></Col>)
+    const artistsView = artists.map(artist => <Col key={artist.id} xl={3}  md={4}><ArtistCard editArtist={editArtist} artist= {artist}  /></Col>)
 
     return (
         <div className="p-GalleryOwnerArtistsPage">
