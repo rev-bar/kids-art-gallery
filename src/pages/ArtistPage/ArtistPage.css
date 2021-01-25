@@ -1,0 +1,94 @@
+
+html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh; 
+  }
+
+  body #root{
+    min-height: 100vh; 
+  }
+
+  
+body .p-aboutArtist{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgK5cH3qeoFP_q_T_HP9x9lUzqTR7A19A6A&usqp=CAU");
+
+    min-height: 100vh;    
+    font-family: Arial, Helvetica, sans-serif;   
+}
+
+.p-aboutArtist{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ align-items: center;
+}
+
+.p-aboutArtist .card-header{
+ text-align: center;
+ font-size: 60px;
+ font-family: 'Lobster', cursive;
+
+   }
+
+.p-aboutArtist .card{
+    width: 80%;
+    background-color:rgb(84, 202, 196) ;
+    border-radius: 5%; 
+    margin: 10%;
+    border: solid 2px rgba(23, 85, 100, 0.73); 
+   }
+
+   .p-aboutArtist .card-title{
+    /* width: 90%; */
+    background-color:rgb(84, 202, 196) ;
+    border-radius: 5%; 
+    margin: 10%; 
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+   }
+   /* .p-home .about-content1{
+    font-size: 3.5vw;
+    font-weight: bold;
+    color: rgba(13, 75, 90, 0.73)
+   }
+   .p-home .about-content2{
+    font-size: 4.5vw;
+    font-weight: bold;
+    color: rgba(3, 43, 53, 0.73)
+   } */
+
+
+   /* .p-home .row{
+       height: 90%;
+       justify-content: space-evenly;
+        align-items: center;
+        margin-top: 5%;
+        width: 100%;
+   } */
+   /* .p-home .col{
+       display: flex;
+       flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10;
+    
+} */
+/* 
+   .p-home .homeDiv img{
+  height:90%;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 10%;
+   } */
+
+
+   /* .p-aboutArtist .join{
+        background-color:rgba(36, 113, 133, 0.73);
+        font-size: 50px;
+        color: rgba(3, 43, 53, 0.73);
+        font-family: 'Lobster', cursive;
+        border: solid 2px rgba(23, 85, 100, 0.73);
+    } */

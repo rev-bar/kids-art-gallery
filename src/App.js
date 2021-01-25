@@ -13,8 +13,8 @@ import { useState } from 'react';
 import Parse from 'parse';
 import UserModel from './model/UserModel';
 import GalleryOwnerArtistsPage from './pages/GalleryOwnerArtistsPage/GalleryOwnerArtistsPage';
-
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import ArtistPage from './pages/ArtistPage/ArtistPage';
 
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
         <Route exact path= "/GalleryOwnerArtists"><GalleryOwnerArtistsPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries/:galleryName"><GalleryByIdPage onLogout={handleLogout}/></Route>
+        <Route exact path= "/AboutArtist"><ArtistPage onLogout={handleLogout}/></Route>
       </Switch>  
     </HashRouter> 
     </ActiveUserContext.Provider> 
