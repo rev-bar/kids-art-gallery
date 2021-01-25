@@ -40,7 +40,7 @@ function SignUpPage(props) {
         }
 
         if (redirectToOwner) {
-            return <Redirect to="/GalleryOwner"/>;
+            return <Redirect to="/GalleryOwnerArtists"/>;
         }
    
     return (

@@ -1,5 +1,6 @@
 import { useState ,useEffect} from "react";
 import { Button, Modal ,Form, Col, Row} from "react-bootstrap";
+import Parse from 'parse';
 import './NewGalleryModal.css';
 
 function NewGalleryModal(props) {
@@ -7,12 +8,13 @@ function NewGalleryModal(props) {
     const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
     const [artist, setArtist] = useState("");
-    
+    const currentUser= Parse.User.current();  
     
     //add use effect with artists
     useEffect( ()=>{
         if (artists.length >= 1){
-            setArtist (artists[0].username);
+            const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
+            setArtist (filteredArtists[0].username);
         }
 
     },[artists])
@@ -33,7 +35,10 @@ function NewGalleryModal(props) {
     //rendering artists selection options:
     let selectOptions = [];
     if(artists.length >= 1 ){
-        selectOptions = artists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
+          
+        const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
+        selectOptions = filteredArtists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
+  
     }
     
     function artistPicked(e){

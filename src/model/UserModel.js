@@ -7,6 +7,7 @@ class UserModel {
         this.picture=user.get("picture");
         this.username=user.get("username");
         this.aditionalData=(user.get("aditionalData"));
+        this.parentId= user.get("parentId");
         this.parseUser=user;
         //add aditional data- about artist
 
