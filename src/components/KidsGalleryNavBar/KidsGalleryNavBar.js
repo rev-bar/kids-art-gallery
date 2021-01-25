@@ -29,7 +29,7 @@ function KidsGalleryNavBar(props) {
    </Nav>
     <Nav className="ml-auto">
     {activeUser ? null:  <Nav.Link href="#/Login">LogIn</Nav.Link>}
-    {activeUser ? null: <Nav.Link href="#">SignIn</Nav.Link>}
+    {activeUser ? null: <Nav.Link href="#/SignUp">SignUp</Nav.Link>}
       {activeUser ? < Nav.Link href="#" onClick={() => onLogout()}>LogOut</Nav.Link>: null}
     </Nav>
   

@@ -14,7 +14,7 @@ import Parse from 'parse';
 import UserModel from './model/UserModel';
 import GalleryOwnerArtistsPage from './pages/GalleryOwnerArtistsPage/GalleryOwnerArtistsPage';
 
-// import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
       <Switch>
         <Route exact path= "/"><HomePage onLogout={handleLogout}/></Route>
         <Route exact path= "/Login"><LoginPage  onLogin={handleLogin}/></Route>
-        {/* <Route exact path= "/SignUp"><SignUpPage/></Route> */}
+        <Route exact path= "/SignUp"><SignUpPage onLogin={handleLogin}/></Route>
         <Route exact path= "/GalleryOwner"><GalleryOwnerPage onLogout={handleLogout}/></Route>
         <Route exact path= "/GalleryOwnerArtists"><GalleryOwnerArtistsPage onLogout={handleLogout}/></Route>
         <Route exact path= "/ArtistGalleries"><ArtistGalleriesPage onLogout={handleLogout}/></Route>
