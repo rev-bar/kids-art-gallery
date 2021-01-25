@@ -8,12 +8,14 @@ function NewGalleryModal(props) {
     const { show, handleClose, addContent } = props;
     const [name, setName] = useState("");
     const [artist, setArtist] = useState("");
-    const currentUser= Parse.User.current();  
+   
+    const currentUser= Parse.User.current(); 
+    const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
     
-    //add use effect with artists
+    console.log(filteredArtists);
+   
     useEffect( ()=>{
-        if (artists.length >= 1){
-            const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
+        if (artists.length >=1 && filteredArtists.length >= 1){ 
             setArtist (filteredArtists[0].username);
         }
 
@@ -21,7 +23,9 @@ function NewGalleryModal(props) {
 
     function closeModal(){
         setName("");
-        setArtist (artists[0].username);
+        if (artists.length >=1 && filteredArtists.length >= 1){ 
+            setArtist (filteredArtists[0].username);
+        }
         handleClose();
     }
 
@@ -35,8 +39,7 @@ function NewGalleryModal(props) {
     //rendering artists selection options:
     let selectOptions = [];
     if(artists.length >= 1 ){
-          
-        const filteredArtists= artists.filter(artist=> artist.parentId.id===currentUser.id );
+    
         selectOptions = filteredArtists.map ((artist, index) =>  <option value = {artist.username} key= {artist.id} >{artist.username}</option> );
   
     }
