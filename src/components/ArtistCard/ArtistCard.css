@@ -4,15 +4,12 @@
 }
 
 .c-artist-card  .card{
-    height: 100%;
+    /* height: 100%; */
     background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
-    height: 300px;
+    min-height: 200px;
 }
 
-.c-artist-card  .card img{
-    height: 200px;
-    object-fit:cover;
-}
+
 
 .c-artist-card  .card-title{
     text-align: center;
