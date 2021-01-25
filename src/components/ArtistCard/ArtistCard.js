@@ -49,7 +49,7 @@ function ArtistCard(props) {
                     </Row>
                         <Accordion.Collapse eventKey="1">
                             <Card.Body>
-                                <Form.Group as={Row} controlId="formHorizontalName">
+                                <Form.Group as={Row} controlId="formHorizontalArtistName">
                                     <Form.Label column sm={12}>
                                         Artist Name
                                     </Form.Label>
@@ -57,7 +57,7 @@ function ArtistCard(props) {
                                         <Form.Control type="text" placeholder="Artist Name" value={newArtistName} onChange={e => setNewArtistName(e.target.value)} />
                                     </Col>
                                 </Form.Group>
-                                <Form.Group as={Row} controlId="formHorizontalName">
+                                <Form.Group as={Row} controlId="formHorizontalAboutName">
                                     <Form.Label column sm={12}>
                                         About the artist
                                     </Form.Label>
