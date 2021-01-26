@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kids-art-gallery/static/css/main.995f2921.chunk.css",
+    "main.css": "/kids-art-gallery/static/css/main.2feaceee.chunk.css",
     "main.js": "/kids-art-gallery/static/js/main.e2ce1874.chunk.js",
     "main.js.map": "/kids-art-gallery/static/js/main.e2ce1874.chunk.js.map",
     "runtime-main.js": "/kids-art-gallery/static/js/runtime-main.455a352f.js",
@@ -12,7 +12,7 @@
     "static/js/3.cbcd4704.chunk.js.map": "/kids-art-gallery/static/js/3.cbcd4704.chunk.js.map",
     "index.html": "/kids-art-gallery/index.html",
     "static/css/2.ae9f1eb3.chunk.css.map": "/kids-art-gallery/static/css/2.ae9f1eb3.chunk.css.map",
-    "static/css/main.995f2921.chunk.css.map": "/kids-art-gallery/static/css/main.995f2921.chunk.css.map",
+    "static/css/main.2feaceee.chunk.css.map": "/kids-art-gallery/static/css/main.2feaceee.chunk.css.map",
     "static/js/2.539639df.chunk.js.LICENSE.txt": "/kids-art-gallery/static/js/2.539639df.chunk.js.LICENSE.txt",
     "static/media/HomePage.css": "/kids-art-gallery/static/media/homebackground.9a3898f8.jpg",
     "static/media/LoginPage.css": "/kids-art-gallery/static/media/loginbackground.9a3898f8.jpg",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.455a352f.js",
     "static/css/2.ae9f1eb3.chunk.css",
     "static/js/2.539639df.chunk.js",
-    "static/css/main.995f2921.chunk.css",
+    "static/css/main.2feaceee.chunk.css",
     "static/js/main.e2ce1874.chunk.js"
   ]
 }
