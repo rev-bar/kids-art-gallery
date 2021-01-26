@@ -32,7 +32,7 @@ body .p-home{
     background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(63, 136, 155, 0.73)),
     url("homebackground.jpg");
     border-radius: 5%;
-    padding: 12%;
+    padding: 8%;
     margin: 5%;
     border: solid 2px rgba(23, 85, 100, 0.73);
     text-align: center;
@@ -40,12 +40,12 @@ body .p-home{
    
    }
    .p-home .about-content1{
-    font-size: 3.5vw;
+    font-size: 2.5vw;
     font-weight: bold;
     color: rgba(13, 75, 90, 0.73)
    }
    .p-home .about-content2{
-    font-size: 4.5vw;
+    font-size: 3.5vw;
     font-weight: bold;
     color: rgba(3, 43, 53, 0.73)
    }
@@ -80,8 +80,8 @@ body .p-home{
 }
 
    .p-home .homeDiv img{
-  height:90%;
-  width: 90%;
+  height:85%;
+  width: 70%;
   object-fit: cover;
   border-radius: 10%;
    }
@@ -89,7 +89,7 @@ body .p-home{
 
    .p-home .join{
         background-color:rgba(36, 113, 133, 0.73);
-        font-size: 4.5vw;
+        font-size: 2.5vw;
         color: rgba(3, 43, 53, 0.73);
         font-family: 'Lobster', cursive;
         border: solid 2px rgba(23, 85, 100, 0.73);
