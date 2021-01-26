@@ -6,7 +6,7 @@
 .c-artist-card  .card{
     /* height: 100%; */
     background-image: linear-gradient(to bottom right, rgb(172, 198, 202), rgb(91, 194, 189));
-    min-height: 200px;
+    min-height: 300px;
 }
 
 
