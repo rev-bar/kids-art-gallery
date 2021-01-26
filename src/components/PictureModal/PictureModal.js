@@ -13,7 +13,7 @@ function PictureModal(props) {
     
     return (
                    
-        <Modal show={show} onHide={handleClose} size="xl" className="c-large-pic-modal">
+        <Modal show={show} onHide={handleClose} size="l" className="c-large-pic-modal">
             <Modal.Body>
                 <Form.Group  controlId="largePic">
                 <Image src={artwork} rounded />
